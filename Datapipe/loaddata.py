@@ -33,6 +33,17 @@ def loaddata():
 
     return low_ds,full_ds
 
+l_ds,f_ds=loaddata()
+for i,l in enumerate(l_ds):
+    if i%2000==0:
+        plt.imshow(l,cmap='gray')
+        plt.show()
+for i,f in enumerate(f_ds):
+    if i%2000==0:
+        plt.imshow(f,cmap='gray')
+        plt.show()
+
+
 
 
         

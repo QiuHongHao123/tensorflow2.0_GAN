@@ -15,7 +15,7 @@ WGAN  Wasserstein GAN
 import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
-from tensorflow_core.python.keras import layers
+from tensorflow.python.keras import layers
 import time
 (train_images,train_labels),(_, _) = my_mnist.load_data(get_new=False,
                                                         normalization=True,
