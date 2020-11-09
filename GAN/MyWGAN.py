@@ -1,23 +1,26 @@
+import os
+
+import numpy as np
 import tensorflow as tf
 import tensorflow.keras as keras
 from Datapipe import loadmnist
 import matplotlib.pyplot as plt
-
+from PIL import Image
 
 class Generator(keras.Model):
     def __init__(self):
         super(Generator, self).__init__()
         self.dense1 = keras.layers.Dense(32, activation=tf.nn.relu)
         self.dense2 = keras.layers.Dense(128, activation=tf.nn.relu)
-        self.dense3 = keras.layers.Dense(784, activation=tf.nn.relu)
+        self.dense3 = keras.layers.Dense(784)
 
     @tf.function
     def call(self, x, training=True):
         l1 = self.dense1(x)
         l2 = self.dense2(l1)
         l3 = self.dense3(l2)
-        l4 = tf.nn.sigmoid(l3)
-        l4 = tf.reshape(l4, [-1, 28, 28])
+        l4 = tf.nn.tanh(l3)
+        l4 = tf.reshape(l4, (-1, 28, 28))
         return l4
 
 
@@ -26,11 +29,11 @@ class Discriminator(keras.Model):
         super(Discriminator, self).__init__()
         self.dense1 = keras.layers.Dense(128, activation=tf.nn.relu)
         self.dense2 = keras.layers.Dense(32, activation=tf.nn.relu)
-        self.dense3 = keras.layers.Dense(1, activation=tf.nn.relu)
+        self.dense3 = keras.layers.Dense(1)
 
     @tf.function
     def call(self, x, training=True):
-        x = tf.reshape(x, [-1, 28, 28])
+        x = tf.reshape(x, (-1, 784))
         l1 = self.dense1(x)
         l2 = self.dense2(l1)
         l3 = self.dense3(l2)
@@ -52,8 +55,8 @@ def d_loss(real_output, fake_output):
     return total_loss
 
 
-generator_optimizer = tf.keras.optimizers.RMSprop(learning_rate=0.001, epsilon=1e-10)
-discriminator_optimizer = tf.keras.optimizers.RMSprop(learning_rate=0.001, epsilon=1e-10)
+generator_optimizer = tf.keras.optimizers.RMSprop(learning_rate=3e-4, epsilon=1e-10)
+discriminator_optimizer = tf.keras.optimizers.RMSprop(learning_rate=3e-4, epsilon=1e-10)
 
 
 @tf.function
@@ -85,25 +88,31 @@ def D_train_step(images, generator: Generator, discriminator: Discriminator):
 def train(train_images: tf.data.Dataset, epochs):
     d = Discriminator()
     g = Generator()
-    db_batch = train_images.shuffle(32 * 2).batch(batch_size=32)
+    db_batch = train_images.shuffle(5).batch(batch_size=128)
 
     for epoch in range(epochs):
 
         for i, db in enumerate(db_batch):
-
-            d_l = D_train_step(db, g, d)
-            if i % 5 == 4:
+            if i % 5 == 0:
                 g_l = G_train_step(db, g, d)
+            d_l = D_train_step(db, g, d)
+
         if epoch % 2 == 1:
             print('epoch=', epoch, 'G-loss=', g_l, 'D-loss=', d_l)
-        if epoch % 100 == 0:
-            z = tf.random.normal([1, 100], mean=0.0, stddev=1.0)
-            fake_img = g(z, False)
-            fake_img = tf.reshape(fake_img, [28, 28])
-            plt.imshow(fake_img, cmap='gray')
+        if epoch % 50 == 0:
+            test = tf.random.normal([1, 100], mean=0.0, stddev=1.0)
+            test= g(test)
+            plt.imshow(tf.squeeze(test),cmap='gray')
             plt.show()
+        if epoch %100 ==1:
+            if not os.path.exists('./mnist-WGAN/g'+str(epoch)):
+                os.mkdir('./mnist-WGAN/g'+str(epoch))
+            g.save("./mnist-WGAN/g"+str(epoch),save_format="tf")
+
+
+
 
 
 train_db, test_db = loadmnist.mnist_dataset()
 
-train(test_db, 400)
+train(train_db, 400)

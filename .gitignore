@@ -125,3 +125,6 @@ dmypy.json
 .pyre/
 
 /LDCT-and-Projection-data/
+/GAN/mnist-images/
+/GAN/mnist-WGAN/
+

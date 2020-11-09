@@ -19,12 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17feb4e2-996b-45d8-b7e5-f110c7910a8e" name="Default Changelist" comment="realness loss copy">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Datapipe/loadmnist.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAN/MyWGAN.py" afterDir="false" />
+    <list default="true" id="17feb4e2-996b-45d8-b7e5-f110c7910a8e" name="Default Changelist" comment="ma de yao ming">
+      <change afterPath="$PROJECT_DIR$/GAN/WGAN-GP.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAN/WGAN.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAN/WGAN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Datapipe/loadmnist.py" beforeDir="false" afterPath="$PROJECT_DIR$/Datapipe/loadmnist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAN/MyWGAN.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAN/MyWGAN.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +57,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/GAN/mnist-WGAN/wgan-100.png&#10;F:/Tensorflow2.0study/GAN/mnist-WGAN/wgan-50.png" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LeetCode" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -83,6 +84,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GAN/MyWGAN.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="WGAN-GP" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Tensorflow2.0study" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GAN" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GAN/WGAN-GP.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -157,42 +180,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="wocao" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Tensorflow2.0study" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Datapipe" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Datapipe/wocao.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.loaddata" />
-      <item itemvalue="Python.wocao" />
       <item itemvalue="Python.loadmnist" />
       <item itemvalue="Python.MyWGAN" />
       <item itemvalue="Python.WGAN" />
+      <item itemvalue="Python.WGAN-GP" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.MyWGAN" />
+        <item itemvalue="Python.WGAN-GP" />
         <item itemvalue="Python.WGAN" />
         <item itemvalue="Python.loadmnist" />
         <item itemvalue="Python.loaddata" />
-        <item itemvalue="Python.wocao" />
       </list>
     </recent_temporary>
   </component>
@@ -229,6 +230,10 @@
       <workItem from="1604449890785" duration="11144000" />
       <workItem from="1604539030021" duration="4076000" />
       <workItem from="1604543208179" duration="21370000" />
+      <workItem from="1604569901521" duration="698000" />
+      <workItem from="1604624074456" duration="8136000" />
+      <workItem from="1604747572221" duration="165000" />
+      <workItem from="1604880555038" duration="11331000" />
     </task>
     <task id="LOCAL-00001" summary="load datas">
       <created>1604026356920</created>
@@ -244,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604307423871</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="ma de yao ming">
+      <created>1604570136438</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1604570136438</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
@@ -274,33 +286,34 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="load datas" />
     <MESSAGE value="realness loss copy" />
-    <option name="LAST_COMMIT_MESSAGE" value="realness loss copy" />
+    <MESSAGE value="ma de yao ming" />
+    <option name="LAST_COMMIT_MESSAGE" value="ma de yao ming" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="91" key="#Inspections" timestamp="1604391858163">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="395" y="91" key="#Inspections/0.0.1536.824@0.0.1536.824" timestamp="1604391858163" />
-    <state x="279" y="110" key="FileChooserDialogImpl" timestamp="1604279579548">
+    <state x="279" y="110" key="FileChooserDialogImpl" timestamp="1604880617235">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="279" y="110" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1604279579548" />
-    <state width="1477" height="210" key="GridCell.Tab.0.bottom" timestamp="1604567357331">
+    <state x="279" y="110" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1604880617235" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1604892474674">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1477" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604567357331" />
-    <state width="1477" height="210" key="GridCell.Tab.0.center" timestamp="1604567357331">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604892474674" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1604892474672">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1477" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1604567357331" />
-    <state width="1477" height="210" key="GridCell.Tab.0.left" timestamp="1604567357331">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1604892474672" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1604892474672">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1477" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1604567357331" />
-    <state width="1477" height="210" key="GridCell.Tab.0.right" timestamp="1604567357331">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1604892474672" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1604892474673">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1477" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604567357331" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604892474673" />
     <state x="0" y="0" key="SettingsEditor" timestamp="1604046636605">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -311,9 +324,10 @@
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1604044361220" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Tensorflow2_0study$WGAN_GP.coverage" NAME="WGAN-GP Coverage Results" MODIFIED="1604887596913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN" />
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$loaddata.coverage" NAME="loaddata Coverage Results" MODIFIED="1604045557978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Datapipe" />
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$loadmnist.coverage" NAME="loadmnist Coverage Results" MODIFIED="1604543883981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Datapipe" />
-    <SUITE FILE_PATH="coverage/Tensorflow2_0study$MyWGAN.coverage" NAME="MyWGAN Coverage Results" MODIFIED="1604566856427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN" />
+    <SUITE FILE_PATH="coverage/Tensorflow2_0study$MyWGAN.coverage" NAME="MyWGAN Coverage Results" MODIFIED="1604892474662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN" />
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$WGAN.coverage" NAME="WGAN Coverage Results" MODIFIED="1604566398490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN" />
   </component>
 </project>
