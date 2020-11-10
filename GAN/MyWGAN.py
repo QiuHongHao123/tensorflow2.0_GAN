@@ -115,4 +115,4 @@ def train(train_images: tf.data.Dataset, epochs):
 
 train_db, test_db = loadmnist.mnist_dataset()
 
-train(train_db, 400)
+train(train_db, 201)
