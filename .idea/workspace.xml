@@ -20,10 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17feb4e2-996b-45d8-b7e5-f110c7910a8e" name="Default Changelist" comment="just fix the error ...&#10;finished the demo about mnist generator">
-      <change afterPath="$PROJECT_DIR$/Block/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAN/MyWGAN.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAN/MyWGAN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ResNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/Block/MyBlocks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Block/MyBlocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/Block/MyBlocks.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,6 +237,7 @@
       <workItem from="1604747572221" duration="165000" />
       <workItem from="1604880555038" duration="14627000" />
       <workItem from="1604969240416" duration="2915000" />
+      <workItem from="1604993230607" duration="2594000" />
     </task>
     <task id="LOCAL-00001" summary="load datas">
       <created>1604026356920</created>
