@@ -86,7 +86,7 @@ generator_optimizer = tf.keras.optimizers.RMSprop(learning_rate=3e-4, epsilon=1e
 discriminator_optimizer = tf.keras.optimizers.RMSprop(learning_rate=3e-4, epsilon=1e-10)
 
 
-def D_train_strp(g: Generator, d: Discriminator, full_img, low_img):
+def D_train_step(g: Generator, d: Discriminator, low_img, full_img):
     with tf.GradientTape() as d_tape:
         fake_img = g(low_img)
         fake_output = d(fake_img)
@@ -98,7 +98,7 @@ def D_train_strp(g: Generator, d: Discriminator, full_img, low_img):
     return d_l
 
 
-def G_train_strp(g: Generator, d: Discriminator, low_img, full_img):
+def G_train_step(g: Generator, d: Discriminator, low_img, full_img):
     with tf.GradientTape() as g_tape:
         fake_img = g(low_img, True)
         fake_output = d(fake_img, training=True)
@@ -109,3 +109,15 @@ def G_train_strp(g: Generator, d: Discriminator, low_img, full_img):
     gradients_of_generator = g_tape.gradient(g_l, g.trainable_variables)
     generator_optimizer.apply_gradients(zip(gradients_of_generator, g.trainable_variables))
     return g_l
+
+
+def train(train_database: tf.data.Dataset, epoch):
+    D = Discriminator()
+    G = Generator()
+    g_l = d_l = 0
+    for i in range(epoch):
+        for (low_img, full_img) in train_database:
+            if i % 5 == 0:
+                g_l = G_train_step(G, D, low_img, full_img)
+            d_l = D_train_step(G, D, low_img, full_img)
+    print("epoch:", epoch, " g_l:", g_l, " d_l", d_l)
