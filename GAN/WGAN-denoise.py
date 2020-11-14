@@ -1,12 +1,22 @@
 import tensorflow as tf
 import tensorflow.keras as keras
+import matplotlib.pyplot as plt
+from Datapipe.loaddata import loaddata
 
 """
 2020/11/12
 试一下wgan用来进行去噪
 考虑复杂度网络结构先采用比较简单的
 generator采用编码器和反编码器的结构
+采用三层带着BN层的卷积网络采用same padding方式
+降采样采用最大池化每次缩小特征图大小一半
 
+上采样为了避免反卷积操作带来的棋盘效应和GAN的梯度消失采用上采样和卷积的方式代替
+
+判别器采用和生成器降采样类似的结构，在最末端使用全连接层进行判断，由于采用的是WGAN所以添加了clip操作并且不带BN层
+优化器采用RMSprop
+
+由于是采用的对称图片有监督的训练方式，所以添加了生成图片和图片之间的L1正则作为惩罚
 """
 
 
@@ -34,11 +44,12 @@ class Generator(keras.Model):
 
     @tf.function
     def call(self, x):
-        d1 = tf.nn.max_pool2d(tf.nn.relu(self.bn1(self.encode1(x))), 2)
-        d2 = tf.nn.max_pool2d(tf.nn.relu(self.bn2(self.encode2(d1))), 2)
-        d3 = tf.nn.max_pool2d(tf.nn.relu(self.bn3(self.encode3(d2))), 2)
+        x = tf.reshape(x, [-1, 512, 512, 1])
+        d1 = tf.nn.max_pool2d(tf.nn.relu(self.bn1(self.encode1(x))), 2, 2, 'VALID')
+        d2 = tf.nn.max_pool2d(tf.nn.relu(self.bn2(self.encode2(d1))), 2, 2, 'VALID')
+        d3 = tf.nn.max_pool2d(tf.nn.relu(self.bn3(self.encode3(d2))), 2, 2, 'VALID')
 
-        u1 = self.conv1(self.up1(d1))
+        u1 = self.conv1(self.up1(d3))
         u2 = self.conv2(self.up2(u1))
         u3 = self.conv3(self.up3(u2))
         u3 = tf.reshape(u3, (-1, 512, 512))
@@ -48,6 +59,7 @@ class Generator(keras.Model):
 class Discriminator(keras.Model):
     def __init__(self):
         super(Discriminator, self).__init__()
+
         self.encode1 = keras.layers.Conv2D(filters=64, kernel_size=3, padding='same')
 
         self.encode2 = keras.layers.Conv2D(128, 3, padding='same')
@@ -59,9 +71,10 @@ class Discriminator(keras.Model):
 
     @tf.function
     def call(self, x):
-        d1 = tf.nn.max_pool2d(tf.nn.relu(self.encode1(x)), 2)
-        d2 = tf.nn.max_pool2d(tf.nn.relu(self.encode2(d1)), 2)
-        d3 = tf.nn.max_pool2d(tf.nn.relu(self.encode3(d2)), 2)
+        x = tf.reshape(x, [-1, 512, 512, 1])
+        d1 = tf.nn.max_pool2d(tf.nn.relu(self.encode1(x)), 2, 2, 'VALID')
+        d2 = tf.nn.max_pool2d(tf.nn.relu(self.encode2(d1)), 2, 2, 'VALID')
+        d3 = tf.nn.max_pool2d(tf.nn.relu(self.encode3(d2)), 2, 2, 'VALID')
         f = self.flat(d3)
         out = self.fn(f)
         return out
@@ -100,8 +113,8 @@ def D_train_step(g: Generator, d: Discriminator, low_img, full_img):
 
 def G_train_step(g: Generator, d: Discriminator, low_img, full_img):
     with tf.GradientTape() as g_tape:
-        fake_img = g(low_img, True)
-        fake_output = d(fake_img, training=True)
+        fake_img = g(low_img)
+        fake_output = d(fake_img)
         g_l = g_loss(fake_output=fake_output)
         l1_loss = tf.reduce_mean(tf.abs(full_img - fake_img))
         # 引入图像的l1正则
@@ -111,13 +124,29 @@ def G_train_step(g: Generator, d: Discriminator, low_img, full_img):
     return g_l
 
 
-def train(train_database: tf.data.Dataset, epoch):
+def train(train_database: tf.data.Dataset, epochs, batchsize):
+    train_database = train_database.shuffle(batchsize * 5).batch(batchsize)
     D = Discriminator()
     G = Generator()
     g_l = d_l = 0
-    for i in range(epoch):
-        for (low_img, full_img) in train_database:
+    for epoch in range(epochs):
+        for i, (low_img, full_img) in enumerate(train_database):
             if i % 5 == 0:
                 g_l = G_train_step(G, D, low_img, full_img)
             d_l = D_train_step(G, D, low_img, full_img)
-    print("epoch:", epoch, " g_l:", g_l, " d_l", d_l)
+        print("epoch:", epoch, " g_l:", g_l, " d_l", d_l)
+
+
+train_db = loaddata(pair=True)
+"""
+for i, (l, f) in enumerate(train_db):
+    if i % 1000 == 0:
+        plt.figure()
+        plt.subplot(111)
+        plt.imshow(l, cmap='gray')
+        plt.subplot(112)
+        plt.imshow(f, cmap='gray')
+        plt.show()
+"""
+print("db finished")
+train(train_db, 100, batchsize=1)

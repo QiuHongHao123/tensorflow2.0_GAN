@@ -25,7 +25,11 @@ def loaddata(pair=True):
             images.append(image)
         images = np.array(images)
         return images
-    print(len(allLowdose),len(allFulldose))
+    def preprocess(pre_low,pre_full):
+        pre_low = tf.cast(pre_low, dtype=tf.float32)
+        pre_full = tf.cast(pre_full, dtype=tf.float32)
+        return pre_low,pre_full
+    print(len(allLowdose), len(allFulldose))
     fulldose_imgs = path2img(allFulldose)
     lowdose_imgs = path2img(allLowdose)
     if not pair:
@@ -35,10 +39,11 @@ def loaddata(pair=True):
 
         return low_ds, full_ds
     else:
-        total_ds = tf.data.Dataset.from_tensor_slices((lowdose_imgs, fulldose_imgs))
+        total_ds = tf.data.Dataset.from_tensor_slices((lowdose_imgs, fulldose_imgs)).map(preprocess)
         return total_ds
 
 
+'''
 total_ds = loaddata()
 for i, (l, f) in enumerate(total_ds):
     if i % 1000 == 0:
@@ -48,3 +53,5 @@ for i, (l, f) in enumerate(total_ds):
         plt.subplot(332)
         plt.imshow(f, cmap='gray')
         plt.show()
+
+'''
