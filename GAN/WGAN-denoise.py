@@ -1,3 +1,5 @@
+import os
+
 import tensorflow as tf
 import tensorflow.keras as keras
 import matplotlib.pyplot as plt
@@ -29,11 +31,11 @@ class Generator(keras.Model):
         super(Generator, self).__init__()
         # input512*512
         self.encode1 = keras.layers.Conv2D(filters=64, kernel_size=3, padding='same')
-        self.bn1 = keras.layers.BatchNormalization()
+        # self.bn1 = keras.layers.BatchNormalization()
         self.encode2 = keras.layers.Conv2D(128, 3, padding='same')
-        self.bn2 = keras.layers.BatchNormalization()
+        # self.bn2 = keras.layers.BatchNormalization()
         self.encode3 = keras.layers.Conv2D(256, 3, padding='same')
-        self.bn3 = keras.layers.BatchNormalization()
+        # self.bn3 = keras.layers.BatchNormalization()
 
         self.up1 = keras.layers.UpSampling2D(size=2)
         self.conv1 = keras.layers.Conv2D(128, 3, padding='same', activation='relu')
@@ -45,13 +47,16 @@ class Generator(keras.Model):
     @tf.function
     def call(self, x):
         x = tf.reshape(x, [-1, 512, 512, 1])
-        d1 = tf.nn.max_pool2d(tf.nn.relu(self.bn1(self.encode1(x))), 2, 2, 'VALID')
-        d2 = tf.nn.max_pool2d(tf.nn.relu(self.bn2(self.encode2(d1))), 2, 2, 'VALID')
-        d3 = tf.nn.max_pool2d(tf.nn.relu(self.bn3(self.encode3(d2))), 2, 2, 'VALID')
+        d1 = tf.nn.relu(self.encode1(x))  # 512x512x64
+        o1 = tf.nn.max_pool2d(d1, 2, 2, 'VALID')  # 256x256x64
+        d2 = tf.nn.relu(self.encode2(o1))  # 256x256x128
+        o2 = tf.nn.max_pool2d(d2, 2, 2, 'VALID')  # 128x128x128
+        d3 = tf.nn.relu(self.encode3(o2))  # 128x128x256
+        o3 = tf.nn.max_pool2d(d3, 2, 2, 'VALID')  # 64x64x256
 
-        u1 = self.conv1(self.up1(d3))
-        u2 = self.conv2(self.up2(u1))
-        u3 = self.conv3(self.up3(u2))
+        u1 = self.conv1(self.up1(o3))  # 128x128x128
+        u2 = self.conv2(tf.concat([self.up2(u1), d2], axis=3))  # 256x256x64
+        u3 = self.conv3(tf.concat([self.up3(u2), d1], axis=3))  # 512x512x1
         u3 = tf.reshape(u3, (-1, 512, 512))
         return u3
 
@@ -116,9 +121,12 @@ def G_train_step(g: Generator, d: Discriminator, low_img, full_img):
         fake_img = g(low_img)
         fake_output = d(fake_img)
         g_l = g_loss(fake_output=fake_output)
-        l1_loss = tf.reduce_mean(tf.abs(full_img - fake_img))
+        #l1_loss = tf.reduce_mean(tf.abs(full_img - fake_img))
+        l2_loss = tf.reduce_mean(tf.losses.mean_squared_error(fake_img,full_img))
         # 引入图像的l1正则
-        g_l = g_l + (50 * l1_loss)
+        # g_l = g_l + 50 * l1_loss
+        # 引入图像的l2正则
+        g_l = g_l + 100 * l2_loss
     gradients_of_generator = g_tape.gradient(g_l, g.trainable_variables)
     generator_optimizer.apply_gradients(zip(gradients_of_generator, g.trainable_variables))
     return g_l
@@ -135,7 +143,41 @@ def train(train_database: tf.data.Dataset, epochs, batchsize):
                 g_l = G_train_step(G, D, low_img, full_img)
             d_l = D_train_step(G, D, low_img, full_img)
         print("epoch:", epoch, " g_l:", g_l, " d_l", d_l)
+        if epoch % 5 == 0:
+            dbiter = train_db.__iter__()
+            temp = list(dbiter)
+            l_show, f_show = temp[0]
+            plt.imshow(tf.squeeze(G(l_show)), cmap='gray')
+            plt.show()
+            plt.imshow(f_show, cmap='gray')
+            plt.show()
+        if epoch %11 ==10:
+            if not os.path.exists('./WGAN-denoise-CT/g'+str(epoch)):
+                os.mkdir('./WGAN-denoise-CT/g'+str(epoch))
+            G.save("./WGAN-denoise-CT/g"+str(epoch),save_format="tf")
+            if not os.path.exists('./WGAN-denoise-CT/d'+str(epoch)):
+                os.mkdir('./WGAN-denoise-CT/d'+str(epoch))
+            G.save("./WGAN-denoise-CT/d"+str(epoch),save_format="tf")
 
+
+
+def Set_GPU_Memory_Growth():
+    gpus = tf.config.experimental.list_physical_devices('GPU')
+    if gpus:
+        try:
+            # 设置 GPU 显存占用为按需分配
+            for gpu in gpus:
+                tf.config.experimental.set_memory_growth(gpu, True)
+            logical_gpus = tf.config.experimental.list_logical_devices('GPU')
+            print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
+        except RuntimeError as e:
+            # 异常处理
+            print(e)
+    else:
+        print('No GPU')
+
+
+# Set_GPU_Memory_Growth()
 
 train_db = loaddata(pair=True)
 """

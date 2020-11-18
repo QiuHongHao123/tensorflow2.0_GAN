@@ -25,10 +25,17 @@ def loaddata(pair=True):
             images.append(image)
         images = np.array(images)
         return images
-    def preprocess(pre_low,pre_full):
-        pre_low = tf.cast(pre_low, dtype=tf.float32)
-        pre_full = tf.cast(pre_full, dtype=tf.float32)
-        return pre_low,pre_full
+
+    def preprocess(pre_low, pre_full):
+        low_min = tf.reduce_min(pre_low)
+        low_max = tf.reduce_max(pre_low)
+        pre_low = (pre_low - low_min) / (low_max - low_min)
+        full_min = tf.reduce_min(pre_full)
+        full_max = tf.reduce_max(pre_full)
+        pre_full = (pre_full - full_min) / (full_max - full_min)
+
+        return pre_low, pre_full
+
     print(len(allLowdose), len(allFulldose))
     fulldose_imgs = path2img(allFulldose)
     lowdose_imgs = path2img(allLowdose)
