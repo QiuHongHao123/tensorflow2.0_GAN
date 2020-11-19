@@ -126,7 +126,7 @@ def G_train_step(g: Generator, d: Discriminator, low_img, full_img):
         # 引入图像的l1正则
         # g_l = g_l + 50 * l1_loss
         # 引入图像的l2正则
-        g_l = g_l + 100 * l2_loss
+        # g_l =  l2_loss
     gradients_of_generator = g_tape.gradient(g_l, g.trainable_variables)
     generator_optimizer.apply_gradients(zip(gradients_of_generator, g.trainable_variables))
     return g_l
@@ -149,15 +149,16 @@ def train(train_database: tf.data.Dataset, epochs, batchsize):
             l_show, f_show = temp[0]
             plt.imshow(tf.squeeze(G(l_show)), cmap='gray')
             plt.show()
-            plt.imshow(f_show, cmap='gray')
-            plt.show()
+            # plt.imshow(f_show, cmap='gray')
+            # plt.show()
         if epoch %11 ==10:
             if not os.path.exists('./WGAN-denoise-CT/g'+str(epoch)):
                 os.mkdir('./WGAN-denoise-CT/g'+str(epoch))
             G.save("./WGAN-denoise-CT/g"+str(epoch),save_format="tf")
             if not os.path.exists('./WGAN-denoise-CT/d'+str(epoch)):
                 os.mkdir('./WGAN-denoise-CT/d'+str(epoch))
-            G.save("./WGAN-denoise-CT/d"+str(epoch),save_format="tf")
+            D.save("./WGAN-denoise-CT/d"+str(epoch),save_format="tf")
+
 
 
 
@@ -191,4 +192,4 @@ for i, (l, f) in enumerate(train_db):
         plt.show()
 """
 print("db finished")
-train(train_db, 100, batchsize=1)
+train(train_db, 100, batchsize=2)

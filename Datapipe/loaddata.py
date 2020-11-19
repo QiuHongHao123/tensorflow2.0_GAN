@@ -62,3 +62,11 @@ for i, (l, f) in enumerate(total_ds):
         plt.show()
 
 '''
+train_db=loaddata()
+dbiter = train_db.__iter__()
+temp = list(dbiter)
+l_show, f_show = temp[0]
+plt.imshow(l_show, cmap='gray')
+plt.show()
+plt.imshow(f_show, cmap='gray')
+plt.show()
