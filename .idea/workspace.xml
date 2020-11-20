@@ -19,9 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17feb4e2-996b-45d8-b7e5-f110c7910a8e" name="Default Changelist" comment=".。。显卡不行啊">
+    <list default="true" id="17feb4e2-996b-45d8-b7e5-f110c7910a8e" name="Default Changelist" comment="try just gan">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Datapipe/loaddata.py" beforeDir="false" afterPath="$PROJECT_DIR$/Datapipe/loaddata.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GAN/WGAN-denoise.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAN/WGAN-denoise.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -249,7 +248,10 @@
       <workItem from="1605505899251" duration="11056000" />
       <workItem from="1605578836366" duration="14480000" />
       <workItem from="1605661651800" duration="21208000" />
-      <workItem from="1605756648582" duration="933000" />
+      <workItem from="1605756648582" duration="5014000" />
+      <workItem from="1605771662780" duration="2967000" />
+      <workItem from="1605777183710" duration="62000" />
+      <workItem from="1605834087517" duration="271000" />
     </task>
     <task id="LOCAL-00001" summary="load datas">
       <created>1604026356920</created>
@@ -314,7 +316,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605676127086</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="try just gan">
+      <created>1605763715644</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1605763715644</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
@@ -350,7 +359,8 @@
     <MESSAGE value="wgan denoise test" />
     <MESSAGE value="prepare" />
     <MESSAGE value=".。。显卡不行啊" />
-    <option name="LAST_COMMIT_MESSAGE" value=".。。显卡不行啊" />
+    <MESSAGE value="try just gan" />
+    <option name="LAST_COMMIT_MESSAGE" value="try just gan" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="91" key="#Inspections" timestamp="1604391858163">
@@ -361,26 +371,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="511" y="265" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1605158764901" />
-    <state x="279" y="110" key="FileChooserDialogImpl" timestamp="1605690653292">
+    <state x="279" y="110" key="FileChooserDialogImpl" timestamp="1605770850564">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="279" y="110" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605690653292" />
-    <state width="1493" height="188" key="GridCell.Tab.0.bottom" timestamp="1605690719951">
+    <state x="279" y="110" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605770850563" />
+    <state width="1493" height="188" key="GridCell.Tab.0.bottom" timestamp="1605776827940">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605690719951" />
-    <state width="1493" height="188" key="GridCell.Tab.0.center" timestamp="1605690719951">
+    <state width="1493" height="188" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605776827940" />
+    <state width="1493" height="188" key="GridCell.Tab.0.center" timestamp="1605776827939">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605690719951" />
-    <state width="1493" height="188" key="GridCell.Tab.0.left" timestamp="1605690719950">
+    <state width="1493" height="188" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605776827939" />
+    <state width="1493" height="188" key="GridCell.Tab.0.left" timestamp="1605776827938">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605690719950" />
-    <state width="1493" height="188" key="GridCell.Tab.0.right" timestamp="1605690719951">
+    <state width="1493" height="188" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605776827938" />
+    <state width="1493" height="188" key="GridCell.Tab.0.right" timestamp="1605776827939">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="188" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605690719951" />
+    <state width="1493" height="188" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605776827939" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1605505729760">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -411,7 +421,7 @@
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$loaddata.coverage" NAME="loaddata Coverage Results" MODIFIED="1605689977422" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Datapipe" />
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$loadmnist.coverage" NAME="loadmnist Coverage Results" MODIFIED="1604543883981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Datapipe" />
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$MyWGAN.coverage" NAME="MyWGAN Coverage Results" MODIFIED="1605164279720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN" />
-    <SUITE FILE_PATH="coverage/Tensorflow2_0study$WGAN_denoise.coverage" NAME="WGAN-denoise Coverage Results" MODIFIED="1605763435784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN" />
+    <SUITE FILE_PATH="coverage/Tensorflow2_0study$WGAN_denoise.coverage" NAME="WGAN-denoise Coverage Results" MODIFIED="1605774450605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN" />
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$WGAN.coverage" NAME="WGAN Coverage Results" MODIFIED="1604566398490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN" />
   </component>
 </project>

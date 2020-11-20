@@ -44,6 +44,7 @@ class Generator(keras.Model):
         self.up3 = keras.layers.UpSampling2D(size=2)
         self.conv3 = keras.layers.Conv2D(1, 3, padding='same', activation='relu')
 
+        self._set_inputs(tf.TensorSpec([None, 512, 512, 1], tf.float32, name="inputs"))
     @tf.function
     def call(self, x):
         x = tf.reshape(x, [-1, 512, 512, 1])
@@ -73,6 +74,8 @@ class Discriminator(keras.Model):
 
         self.flat = keras.layers.Flatten()
         self.fn = keras.layers.Dense(1)
+
+        self._set_inputs(tf.TensorSpec([None, 512, 512, 1], tf.float32, name="inputs"))
 
     @tf.function
     def call(self, x):
@@ -133,9 +136,12 @@ def G_train_step(g: Generator, d: Discriminator, low_img, full_img):
 
 
 def train(train_database: tf.data.Dataset, epochs, batchsize):
+
     train_database = train_database.shuffle(batchsize * 5).batch(batchsize)
     D = Discriminator()
     G = Generator()
+    checkpoint=tf.train.Checkpoint(mymodel_G=G,mymodel_D=D)
+    checkpointManager=tf.train.CheckpointManager(checkpoint,directory='./WGAN-denoise-CT/model',max_to_keep=3)
     g_l = d_l = 0
     for epoch in range(epochs):
         for i, (low_img, full_img) in enumerate(train_database):
@@ -151,13 +157,15 @@ def train(train_database: tf.data.Dataset, epochs, batchsize):
             plt.show()
             # plt.imshow(f_show, cmap='gray')
             # plt.show()
-        if epoch %11 ==10:
-            if not os.path.exists('./WGAN-denoise-CT/g'+str(epoch)):
-                os.mkdir('./WGAN-denoise-CT/g'+str(epoch))
-            G.save("./WGAN-denoise-CT/g"+str(epoch),save_format="tf")
-            if not os.path.exists('./WGAN-denoise-CT/d'+str(epoch)):
-                os.mkdir('./WGAN-denoise-CT/d'+str(epoch))
-            D.save("./WGAN-denoise-CT/d"+str(epoch),save_format="tf")
+        if epoch %10 ==0:
+            # if not os.path.exists('./WGAN-denoise-CT/g'+str(epoch)):
+            #     os.mkdir('./WGAN-denoise-CT/g'+str(epoch))
+            # G.save("./WGAN-denoise-CT/g"+str(epoch)+'.h5',save_format="tf")
+            # if not os.path.exists('./WGAN-denoise-CT/d'+str(epoch)):
+            #     os.mkdir('./WGAN-denoise-CT/d'+str(epoch))
+            # D.save("./WGAN-denoise-CT/d"+str(epoch),save_format="tf")
+            checkpointManager.save(epoch)
+            print("save checkpoint"+str(epoch))
 
 
 
