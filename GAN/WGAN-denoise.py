@@ -129,19 +129,22 @@ def G_train_step(g: Generator, d: Discriminator, low_img, full_img):
         # 引入图像的l1正则
         # g_l = g_l + 50 * l1_loss
         # 引入图像的l2正则
-        # g_l =  l2_loss
+        g_l = 0.5*g_l+0.5*l2_loss
     gradients_of_generator = g_tape.gradient(g_l, g.trainable_variables)
     generator_optimizer.apply_gradients(zip(gradients_of_generator, g.trainable_variables))
     return g_l
 
 
-def train(train_database: tf.data.Dataset, epochs, batchsize):
+def train(train_database: tf.data.Dataset, epochs, batchsize, continue_train=False):
 
     train_database = train_database.shuffle(batchsize * 5).batch(batchsize)
     D = Discriminator()
     G = Generator()
     checkpoint=tf.train.Checkpoint(mymodel_G=G,mymodel_D=D)
+    if continue_train:
+        checkpoint.restore(tf.train.latest_checkpoint('./WGAN-denoise-CT/model'))
     checkpointManager=tf.train.CheckpointManager(checkpoint,directory='./WGAN-denoise-CT/model',max_to_keep=3)
+
     g_l = d_l = 0
     for epoch in range(epochs):
         for i, (low_img, full_img) in enumerate(train_database):
@@ -157,7 +160,7 @@ def train(train_database: tf.data.Dataset, epochs, batchsize):
             plt.show()
             # plt.imshow(f_show, cmap='gray')
             # plt.show()
-        if epoch %10 ==0:
+        if epoch %11 ==10:
             # if not os.path.exists('./WGAN-denoise-CT/g'+str(epoch)):
             #     os.mkdir('./WGAN-denoise-CT/g'+str(epoch))
             # G.save("./WGAN-denoise-CT/g"+str(epoch)+'.h5',save_format="tf")
@@ -200,4 +203,4 @@ for i, (l, f) in enumerate(train_db):
         plt.show()
 """
 print("db finished")
-train(train_db, 100, batchsize=2)
+train(train_db, 100, batchsize=2,continue_train=True)
