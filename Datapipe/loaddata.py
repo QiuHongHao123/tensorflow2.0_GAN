@@ -5,16 +5,17 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
 import pydicom
+import h5py
 
 
-def loaddata(pair=True):
+def encode2TfRecord():
     flag = 1
     imagePath = "../LDCT-and-Projection-data"
     if not os.path.exists(imagePath):
         print(imagePath + "not exist")
         return
     allFulldose = glob.glob(imagePath + "/*/*/*-Full dose images-*/*.dcm")
-    allLowdose = glob.glob(imagePath + "/*/*/*-Low dose images-*/*.dcm")
+    allLowdose = glob.glob(imagePath + "/*/*/*-Low Dose Images-*/*.dcm")
 
     def path2img(imgPaths):
         images = []
@@ -23,31 +24,50 @@ def loaddata(pair=True):
 
             image = image_bytes.pixel_array
             images.append(image)
-        images = np.array(images)
+
+        def preprocess(input):
+            min = tf.reduce_min(input)
+            max = tf.reduce_max(input)
+            output = (input - min) / (max - min)
+            return output
+
+        images = preprocess(np.array(images))
         return images
-
-    def preprocess(pre_low, pre_full):
-        low_min = tf.reduce_min(pre_low)
-        low_max = tf.reduce_max(pre_low)
-        pre_low = (pre_low - low_min) / (low_max - low_min)
-        full_min = tf.reduce_min(pre_full)
-        full_max = tf.reduce_max(pre_full)
-        pre_full = (pre_full - full_min) / (full_max - full_min)
-
-        return pre_low, pre_full
 
     print(len(allLowdose), len(allFulldose))
     fulldose_imgs = path2img(allFulldose)
     lowdose_imgs = path2img(allLowdose)
-    if not pair:
+    print(fulldose_imgs.shape, lowdose_imgs.shape)
 
-        full_ds = tf.data.Dataset.from_tensor_slices(fulldose_imgs)
-        low_ds = tf.data.Dataset.from_tensor_slices(lowdose_imgs)
+    # tfrecord
+    writer = tf.io.TFRecordWriter('trainData')
+    for i in range(len(lowdose_imgs)):
+        feature = {  # 建立feature字典
+            'image': tf.train.Feature(bytes_list=tf.train.BytesList((lowdose_imgs[i], fulldose_imgs[i]))),
+        }
+        # 通过字典创建example
+        example = tf.train.Example(features=tf.train.Features(feature=feature))
+        # 将example序列化并写入字典
+        writer.write(example.SerializeToString())
+    writer.close()
+    print('db finished')
+    return None
 
-        return low_ds, full_ds
-    else:
-        total_ds = tf.data.Dataset.from_tensor_slices((lowdose_imgs, fulldose_imgs)).map(preprocess)
-        return total_ds
+
+def decode(filename):
+    dataset = tf.data.TFRecordDataset(filename)
+    feature = {  # 建立feature字典
+        'image': tf.io.FixedLenFeature([], tf.string)
+    }
+
+    # 解码
+    def _parse_example(input):
+        feature_dic = tf.io.parse_single_example(input, feature)
+        imgs = tf.reshape(feature_dic['image'], [2, 512, 512])
+        return imgs
+
+    dataset = dataset.map(_parse_example)
+    return dataset
 
 
 '''
@@ -62,11 +82,3 @@ for i, (l, f) in enumerate(total_ds):
         plt.show()
 
 '''
-train_db=loaddata()
-dbiter = train_db.__iter__()
-temp = list(dbiter)
-l_show, f_show = temp[0]
-plt.imshow(l_show, cmap='gray')
-plt.show()
-plt.imshow(f_show, cmap='gray')
-plt.show()
