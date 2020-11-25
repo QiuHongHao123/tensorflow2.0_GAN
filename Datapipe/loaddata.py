@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pydicom
 import h5py
-
+import IPython.display as display
 
 def encode2TfRecord():
     flag = 1
@@ -24,32 +24,67 @@ def encode2TfRecord():
 
             image = image_bytes.pixel_array
             images.append(image)
-
-        def preprocess(input):
-            min = tf.reduce_min(input)
-            max = tf.reduce_max(input)
-            output = (input - min) / (max - min)
-            return output
-
-        images = preprocess(np.array(images))
         return images
 
     print(len(allLowdose), len(allFulldose))
+
+    def preprocess(low,full):
+        low = tf.cast(low, dtype=tf.float32)
+        full = tf.cast(full, dtype=tf.float32)
+        l_min = tf.reduce_min(low)
+        l_max = tf.reduce_max(low)
+        low = (low - l_min) / (l_max - l_min)
+        f_min = tf.reduce_min(full)
+        f_max = tf.reduce_max(full)
+        full = (full - f_min) / (f_max - f_min)
+        return low,full
     fulldose_imgs = path2img(allFulldose)
     lowdose_imgs = path2img(allLowdose)
-    print(fulldose_imgs.shape, lowdose_imgs.shape)
 
-    # tfrecord
-    writer = tf.io.TFRecordWriter('trainData')
-    for i in range(len(lowdose_imgs)):
-        feature = {  # 建立feature字典
-            'image': tf.train.Feature(bytes_list=tf.train.BytesList((lowdose_imgs[i], fulldose_imgs[i]))),
+    dataset = tf.data.Dataset.from_tensor_slices((lowdose_imgs,fulldose_imgs))
+    dataset.map(preprocess)
+
+
+    # 序列化
+    def _bytes_feature(value):
+        """Returns a bytes_list from a string / byte."""
+        if isinstance(value, type(tf.constant(0))):
+            value = value.numpy()  # BytesList won't unpack a string from an EagerTensor.
+        return tf.train.Feature(bytes_list=tf.train.BytesList(value=[value]))
+
+    def serialize_example(low_img,full_img):
+        """
+        Creates a tf.Example message ready to be written to a file.
+        """
+        # Create a dictionary mapping the feature name to the tf.Example-compatible
+        # data type.
+        low_img=low_img.numpy().tobytes()
+        full_img=full_img.numpy().tobytes()
+        feature = {
+            'low_img': _bytes_feature(low_img),
+            'full_img': _bytes_feature(full_img),
         }
-        # 通过字典创建example
-        example = tf.train.Example(features=tf.train.Features(feature=feature))
-        # 将example序列化并写入字典
-        writer.write(example.SerializeToString())
-    writer.close()
+
+        # Create a Features message using tf.train.Example.
+
+        example_proto = tf.train.Example(features=tf.train.Features(feature=feature))
+        return example_proto.SerializeToString()
+
+    def tf_serialize_example(l,f):
+
+        tf_string = tf.py_function(
+            serialize_example,
+            (l,f),  # pass these args to the above function.
+            tf.string)  # the return type is `tf.string`.
+        return tf.reshape(tf_string, ())
+
+
+    serialized_dataset = dataset.map(tf_serialize_example)
+
+    filename = 'trainData.tfrecord'
+    writer = tf.data.experimental.TFRecordWriter(filename)
+    writer.write(serialized_dataset)
+
     print('db finished')
     return None
 
@@ -57,16 +92,17 @@ def encode2TfRecord():
 def decode(filename):
     dataset = tf.data.TFRecordDataset(filename)
     feature = {  # 建立feature字典
-        'image': tf.io.FixedLenFeature([], tf.string)
+        'low_img': tf.io.FixedLenFeature([], tf.string),
+        'full_img': tf.io.FixedLenFeature([], tf.string)
     }
 
     # 解码
     def _parse_example(input):
         feature_dic = tf.io.parse_single_example(input, feature)
-        imgs = tf.reshape(feature_dic['image'], [2, 512, 512])
-        return imgs
+        return feature_dic
 
     dataset = dataset.map(_parse_example)
+
     return dataset
 
 
@@ -82,3 +118,19 @@ for i, (l, f) in enumerate(total_ds):
         plt.show()
 
 '''
+#encode2TfRecord()
+
+'''
+解码代码示例
+'''
+# dataset=decode('trainData.tfrecord')
+# print(dataset)
+# for d in dataset.take(1):
+#     image_raw=np.frombuffer(d['full_img'].numpy(),dtype='float32')
+#     print(image_raw)
+#     image_raw=tf.reshape(image_raw,[512,512,1])
+#     print(image_raw)
+#     plt.imshow(image_raw,cmap='gray')
+#     plt.show()
+
+
