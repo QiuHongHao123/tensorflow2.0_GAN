@@ -1,12 +1,8 @@
 import os
 import glob
-import random
 import tensorflow as tf
-import matplotlib.pyplot as plt
-import numpy as np
 import pydicom
-import h5py
-import IPython.display as display
+
 
 def encode2TfRecord():
     flag = 1
