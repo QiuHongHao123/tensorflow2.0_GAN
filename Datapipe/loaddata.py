@@ -1,7 +1,10 @@
 import os
 import glob
+
+import numpy as np
 import tensorflow as tf
 import pydicom
+import matplotlib.pyplot as plt
 
 
 def encode2TfRecord():
@@ -114,19 +117,24 @@ for i, (l, f) in enumerate(total_ds):
         plt.show()
 
 '''
-#encode2TfRecord()
+encode2TfRecord()
 
 '''
 解码代码示例
 '''
-# dataset=decode('trainData.tfrecord')
-# print(dataset)
-# for d in dataset.take(1):
-#     image_raw=np.frombuffer(d['full_img'].numpy(),dtype='float32')
-#     print(image_raw)
-#     image_raw=tf.reshape(image_raw,[512,512,1])
-#     print(image_raw)
-#     plt.imshow(image_raw,cmap='gray')
-#     plt.show()
+dataset=decode('trainData.tfrecord')
+
+dataset=dataset.batch(2)
+print(dataset)
+batchsize=2
+for onebatch in dataset:
+    full_img = np.zeros([batchsize,262144],dtype='float32')
+    for i,f in enumerate(onebatch['full_img']):
+
+        full_img[i]=np.frombuffer(f.numpy(), dtype='float32')
+    print(full_img.shape)
+    full_img=tf.reshape(full_img,[-1,512,512,1])
+    plt.imshow(full_img[0],cmap='gray')
+    plt.show()
 
 
