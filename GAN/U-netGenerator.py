@@ -6,18 +6,18 @@ class Generator_unet(keras.Model):
     def __init__(self):
         super(Generator_unet, self).__init__()
 
-        self.convd1_1 = keras.layers.Conv2D(filters=64, kernel_size=3, padding='SAME',dilation_rate=2)
-        self.convd1_2 = keras.layers.Conv2D(64, 3, padding='SAME')
+        self.convd1_1 = keras.layers.Conv2D(filters=64, kernel_size=3, padding='SAME')
+        self.convd1_2 = keras.layers.Conv2D(64, 3, padding='SAME',dilation_rate=2)
 
         self.down1 = keras.layers.MaxPool2D(2, 2, padding='VALID')
 
-        self.convd2_1 = keras.layers.Conv2D(128, 3, padding='SAME',dilation_rate=2)
-        self.convd2_2 = keras.layers.Conv2D(128, 3, padding='SAME')
+        self.convd2_1 = keras.layers.Conv2D(128, 3, padding='SAME')
+        self.convd2_2 = keras.layers.Conv2D(128, 3, padding='SAME',dilation_rate=2)
 
         self.down2 = keras.layers.MaxPool2D(2, 2, padding='VALID')
 
-        self.convd3_1 = keras.layers.Conv2D(256, 3, padding='SAME',dilation_rate=2)
-        self.convd3_2 = keras.layers.Conv2D(256, 3, padding='SAME')
+        self.convd3_1 = keras.layers.Conv2D(256, 3, padding='SAME')
+        self.convd3_2 = keras.layers.Conv2D(256, 3, padding='SAME',dilation_rate=2)
 
         self.down3 = keras.layers.MaxPool2D(2, 2, padding='VALID')
 
@@ -28,20 +28,20 @@ class Generator_unet(keras.Model):
         self.up1 = keras.layers.UpSampling2D(size=2)
 
         self.convu3_0 = keras.layers.Conv2D(256, 3, padding='SAME')
-        self.convu3_1 = keras.layers.Conv2D(256, 3, padding='SAME',dilation_rate=2)
-        self.convu3_2 = keras.layers.Conv2D(256, 3, padding='SAME')
+        self.convu3_1 = keras.layers.Conv2D(256, 3, padding='SAME')
+        self.convu3_2 = keras.layers.Conv2D(256, 3, padding='SAME',dilation_rate=2)
 
         self.up2 = keras.layers.UpSampling2D(size=2)
 
         self.convu2_0 = keras.layers.Conv2D(128, 3, padding='SAME')
-        self.convu2_1 = keras.layers.Conv2D(128, 3, padding='SAME',dilation_rate=2)
-        self.convu2_2 = keras.layers.Conv2D(128, 3, padding='SAME')
+        self.convu2_1 = keras.layers.Conv2D(128, 3, padding='SAME')
+        self.convu2_2 = keras.layers.Conv2D(128, 3, padding='SAME',dilation_rate=2)
 
         self.up3 = keras.layers.UpSampling2D(size=2)
 
         self.convu1_0 = keras.layers.Conv2D(64, 3, padding='SAME')
-        self.convu1_1 = keras.layers.Conv2D(64, 3, padding='SAME',dilation_rate=2)
-        self.convu1_2 = keras.layers.Conv2D(64, 3, padding='SAME')
+        self.convu1_1 = keras.layers.Conv2D(64, 3, padding='SAME')
+        self.convu1_2 = keras.layers.Conv2D(64, 3, padding='SAME',dilation_rate=2)
 
         self.outconv = keras.layers.Conv2D(1, 1, padding='SAME', activation=tf.nn.tanh)
 
