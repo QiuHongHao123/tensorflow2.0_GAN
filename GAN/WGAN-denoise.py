@@ -1,9 +1,11 @@
 import os
 
+import numpy as np
 import tensorflow as tf
 import tensorflow.keras as keras
 import matplotlib.pyplot as plt
-from Datapipe.loaddata import loaddata
+
+from Datapipe.loaddata import decode
 
 """
 2020/11/12
@@ -147,7 +149,17 @@ def train(train_database: tf.data.Dataset, epochs, batchsize, continue_train=Fal
 
     g_l = d_l = 0
     for epoch in range(epochs):
-        for i, (low_img, full_img) in enumerate(train_database):
+        # 加载一个batch的训练数据
+        for i, onedb in enumerate(train_database):
+            full_img = np.zeros([batchsize, 262144], dtype='float32')
+            for j, f in enumerate(onedb['full_img']):
+                full_img[j] = np.frombuffer(f.numpy(), dtype='float32')
+            full_img = tf.reshape(full_img, [-1, 512, 512, 1])
+            low_img = np.zeros([batchsize, 262144], dtype='float32')
+            for j, f in enumerate(onedb['low_img']):
+                low_img[j] = np.frombuffer(f.numpy(), dtype='float32')
+            low_img = tf.reshape(low_img, [-1, 512, 512, 1])
+
             if i % 5 == 0:
                 g_l = G_train_step(G, D, low_img, full_img)
             d_l = D_train_step(G, D, low_img, full_img)
@@ -190,8 +202,7 @@ def Set_GPU_Memory_Growth():
 
 
 # Set_GPU_Memory_Growth()
-
-train_db = loaddata(pair=True)
+train_db=decode('trainData.tfrecord')
 """
 for i, (l, f) in enumerate(train_db):
     if i % 1000 == 0:

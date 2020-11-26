@@ -9,7 +9,8 @@ class PatchDiscriminator(keras.Model):
         self.conv2 = keras.layers.Conv2D(128, 3, 1, activation=tf.nn.leaky_relu,dilation_rate=2)
         self.conv3 = keras.layers.Conv2D(256, 3, 1, activation=tf.nn.leaky_relu,dilation_rate=3)
         self.conv4 = keras.layers.Conv2D(512, 3, 1, activation=tf.nn.leaky_relu)
-        self.last = keras.layers.Conv2D(1, 3, 1, activation=tf.nn.sigmoid)
+        self.last = keras.layers.Conv2D(1, 3, 1)
+        self.flatten = keras.layers.Flatten()
 
     @tf.function
     def call(self, x):
@@ -18,4 +19,5 @@ class PatchDiscriminator(keras.Model):
         x = self.conv3(x)
         x = self.conv4(x)
         res = self.last(x)
+        res = self.flatten(res)
         return res
