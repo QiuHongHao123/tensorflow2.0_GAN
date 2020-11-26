@@ -13,8 +13,8 @@ def train_withOnlyL2(train_database:tf.data.Dataset,epochs,batchsize,continue_tr
 
     checkpoint = tf.train.Checkpoint(mymodel_G=G)
     if continue_train:
-        checkpoint.restore(tf.train.latest_checkpoint('./WGAN-denoise-CT/model'))
-    checkpointManager = tf.train.CheckpointManager(checkpoint, directory='./WGAN-denoise-CT/model', max_to_keep=3)
+        checkpoint.restore(tf.train.latest_checkpoint('/content/drive/MyDrive/denoise_withoutGAN/model'))
+    checkpointManager = tf.train.CheckpointManager(checkpoint, directory='/content/drive/MyDrive/denoise_withoutGAN/model', max_to_keep=3)
     g_l=0
     for epoch in range(epochs):
         # 加载一个batch
