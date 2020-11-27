@@ -26,22 +26,12 @@ def encode2TfRecord():
         return images
 
     print(len(allLowdose), len(allFulldose))
-
-    def preprocess(low,full):
-        low = tf.cast(low, dtype=tf.float32)
-        full = tf.cast(full, dtype=tf.float32)
-        l_min = tf.reduce_min(low)
-        l_max = tf.reduce_max(low)
-        low = (low - l_min) / (l_max - l_min)
-        f_min = tf.reduce_min(full)
-        f_max = tf.reduce_max(full)
-        full = (full - f_min) / (f_max - f_min)
-        return low,full
     fulldose_imgs = path2img(allFulldose)
     lowdose_imgs = path2img(allLowdose)
-
+    fulldose_imgs = np.array(fulldose_imgs,dtype='int16')
+    lowdose_imgs = np.array(lowdose_imgs,dtype='int16')
     dataset = tf.data.Dataset.from_tensor_slices((lowdose_imgs,fulldose_imgs))
-    dataset.map(preprocess)
+
 
 
     # 序列化
@@ -57,8 +47,10 @@ def encode2TfRecord():
         """
         # Create a dictionary mapping the feature name to the tf.Example-compatible
         # data type.
+
         low_img=low_img.numpy().tobytes()
         full_img=full_img.numpy().tobytes()
+
         feature = {
             'low_img': _bytes_feature(low_img),
             'full_img': _bytes_feature(full_img),
@@ -98,12 +90,23 @@ def decode(filename):
     # 解码
     def _parse_example(input):
         feature_dic = tf.io.parse_single_example(input, feature)
-        feature_dic['low_img'] = tf.reshape(tf.io.decode_raw(feature_dic['low_img'],tf.float32),[512,512])
-        feature_dic['full_img'] = tf.reshape(tf.io.decode_raw(feature_dic['full_img'], tf.float32),[512,512])
+        feature_dic['low_img'] = tf.reshape(tf.io.decode_raw(feature_dic['low_img'],tf.int16),[512,512])
+        feature_dic['full_img'] = tf.reshape(tf.io.decode_raw(feature_dic['full_img'], tf.int16),[512,512])
         return feature_dic['low_img'],feature_dic['full_img']
 
     dataset = dataset.map(_parse_example)
 
+    def preprocess(low, full):
+        low = tf.cast(low, dtype=tf.float32)
+        full = tf.cast(full, dtype=tf.float32)
+        l_min = tf.reduce_min(low)
+        l_max = tf.reduce_max(low)
+        low = (low - l_min) / (l_max - l_min)
+        f_min = tf.reduce_min(full)
+        f_max = tf.reduce_max(full)
+        full = (full - f_min) / (f_max - f_min)
+        return low, full
+    dataset = dataset.map(preprocess)
     return dataset
 
 
@@ -119,7 +122,7 @@ for i, (l, f) in enumerate(total_ds):
         plt.show()
 
 '''
-#encode2TfRecord()
+encode2TfRecord()
 #
 # '''
 # 解码代码示例

@@ -151,12 +151,7 @@ def train(train_database: tf.data.Dataset, epochs, batchsize, continue_train=Fal
     for epoch in range(epochs):
         # 加载一个batch的训练数据
         for i, (low_img, full_img) in enumerate(train_database):
-            plt.imshow(low_img[0],cmap='gray')
-            plt.show()
-            plt.imshow(full_img[0],cmap='gray')
-            plt.show()
-            plt.imshow(tf.subtract(low_img[0],full_img[0]),cmap='gray')
-            plt.show()
+
             if i % 5 == 0:
                 g_l = G_train_step(G, D, low_img, full_img)
             d_l = D_train_step(G, D, low_img, full_img)
@@ -190,28 +185,22 @@ def Set_GPU_Memory_Growth():
 
 
 # Set_GPU_Memory_Growth()
-train_db = decode('../Datapipe/trainData.tfrecord')
-"""
-for i, (l, f) in enumerate(train_db):0
-    if i % 1000 == 0:
-        plt.figure()
-        plt.subplot(111)
-        plt.imshow(l, cmap='gray')
-        plt.subplot(112)
-        plt.imshow(f, cmap='gray')
-        plt.show()
+# train_db = decode('../Datapipe/trainData.tfrecord')
+#
+# print("db finished")
+#
+# train(train_db, 100, batchsize=2)
 
-print("db finished")
-train(train_db, 100, batchsize=2)
-"""
-def test():
-    train_database = decode('../Datapipe/trainData.tfrecord')
-    train_database = train_database.shuffle(2 * 5).batch(2)
-    for i, (low_img, full_img) in enumerate(train_database.take(2)):
-        plt.imshow(low_img[0], cmap='gray')
-        plt.show()
-        plt.imshow(full_img[0], cmap='gray')
-        plt.show()
-        plt.imshow(tf.subtract(low_img[0], full_img[0]), cmap='gray')
-        plt.show()
-test()
+# def test():
+#
+#     train_database = decode('./trainData.tfrecord')
+#
+#     train_database = train_database.shuffle(2 * 5).batch(2)
+#     for i, (low_img, full_img) in enumerate(train_database.take(2)):
+#         plt.imshow(low_img[0], cmap='gray')
+#         plt.show()
+#         plt.imshow(full_img[0], cmap='gray')
+#         plt.show()
+#         plt.imshow(tf.subtract(low_img[0], full_img[0]), cmap='gray')
+#         plt.show()
+# test()
