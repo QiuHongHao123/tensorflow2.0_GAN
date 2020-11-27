@@ -98,7 +98,9 @@ def decode(filename):
     # 解码
     def _parse_example(input):
         feature_dic = tf.io.parse_single_example(input, feature)
-        return feature_dic
+        feature_dic['low_img'] = tf.reshape(tf.io.decode_raw(feature_dic['low_img'],tf.float32),[512,512])
+        feature_dic['full_img'] = tf.reshape(tf.io.decode_raw(feature_dic['full_img'], tf.float32),[512,512])
+        return feature_dic['low_img'],feature_dic['full_img']
 
     dataset = dataset.map(_parse_example)
 
@@ -117,24 +119,24 @@ for i, (l, f) in enumerate(total_ds):
         plt.show()
 
 '''
-encode2TfRecord()
-
-'''
-解码代码示例
-'''
-dataset=decode('trainData.tfrecord')
-
-dataset=dataset.batch(2)
-print(dataset)
-batchsize=2
-for onebatch in dataset:
-    full_img = np.zeros([batchsize,262144],dtype='float32')
-    for i,f in enumerate(onebatch['full_img']):
-
-        full_img[i]=np.frombuffer(f.numpy(), dtype='float32')
-    print(full_img.shape)
-    full_img=tf.reshape(full_img,[-1,512,512,1])
-    plt.imshow(full_img[0],cmap='gray')
-    plt.show()
-
+#encode2TfRecord()
+#
+# '''
+# 解码代码示例
+# '''
+# dataset=decode('trainData.tfrecord')
+#
+# dataset=dataset.batch(2)
+# print(dataset)
+# batchsize=2
+# for onebatch in dataset:
+#     full_img = np.zeros([batchsize,262144],dtype='float32')
+#     for i,f in enumerate(onebatch['full_img']):
+#
+#         full_img[i]=np.frombuffer(f.numpy(), dtype='float32')
+#     print(full_img.shape)
+#     full_img=tf.reshape(full_img,[-1,512,512,1])
+#     plt.imshow(full_img[0],cmap='gray')
+#     plt.show()
+#
 

@@ -47,6 +47,7 @@ class Generator(keras.Model):
         self.conv3 = keras.layers.Conv2D(1, 3, padding='same', activation='relu')
 
         self._set_inputs(tf.TensorSpec([None, 512, 512, 1], tf.float32, name="inputs"))
+
     @tf.function
     def call(self, x):
         x = tf.reshape(x, [-1, 512, 512, 1])
@@ -126,53 +127,42 @@ def G_train_step(g: Generator, d: Discriminator, low_img, full_img):
         fake_img = g(low_img)
         fake_output = d(fake_img)
         g_l = g_loss(fake_output=fake_output)
-        #l1_loss = tf.reduce_mean(tf.abs(full_img - fake_img))
-        l2_loss = tf.reduce_mean(tf.losses.mean_squared_error(fake_img,full_img))
+        # l1_loss = tf.reduce_mean(tf.abs(full_img - fake_img))
+        l2_loss = tf.reduce_mean(tf.losses.mean_squared_error(fake_img, full_img))
+
         # 引入图像的l1正则
         # g_l = g_l + 50 * l1_loss
         # 引入图像的l2正则
-        g_l = 0.5*g_l+0.5*l2_loss
+        g_l = 0.5 * g_l + 0.5 * l2_loss
     gradients_of_generator = g_tape.gradient(g_l, g.trainable_variables)
     generator_optimizer.apply_gradients(zip(gradients_of_generator, g.trainable_variables))
     return g_l
 
 
 def train(train_database: tf.data.Dataset, epochs, batchsize, continue_train=False):
-
     train_database = train_database.shuffle(batchsize * 5).batch(batchsize)
     D = Discriminator()
     G = Generator()
-    checkpoint=tf.train.Checkpoint(mymodel_G=G,mymodel_D=D)
+    checkpoint = tf.train.Checkpoint(mymodel_G=G, mymodel_D=D)
     if continue_train:
         checkpoint.restore(tf.train.latest_checkpoint('./WGAN-denoise-CT/model'))
-    checkpointManager=tf.train.CheckpointManager(checkpoint,directory='./WGAN-denoise-CT/model',max_to_keep=3)
-
+    checkpointManager = tf.train.CheckpointManager(checkpoint, directory='./WGAN-denoise-CT/model', max_to_keep=3)
     g_l = d_l = 0
     for epoch in range(epochs):
         # 加载一个batch的训练数据
-        for i, onedb in enumerate(train_database):
-            full_img = np.zeros([batchsize, 262144], dtype='float32')
-            for j, f in enumerate(onedb['full_img']):
-                full_img[j] = np.frombuffer(f.numpy(), dtype='float32')
-            full_img = tf.reshape(full_img, [-1, 512, 512, 1])
-            low_img = np.zeros([batchsize, 262144], dtype='float32')
-            for j, f in enumerate(onedb['low_img']):
-                low_img[j] = np.frombuffer(f.numpy(), dtype='float32')
-            low_img = tf.reshape(low_img, [-1, 512, 512, 1])
-
+        for i, (low_img, full_img) in enumerate(train_database):
+            plt.imshow(low_img[0],cmap='gray')
+            plt.show()
+            plt.imshow(full_img[0],cmap='gray')
+            plt.show()
+            plt.imshow(tf.subtract(low_img[0],full_img[0]),cmap='gray')
+            plt.show()
             if i % 5 == 0:
                 g_l = G_train_step(G, D, low_img, full_img)
             d_l = D_train_step(G, D, low_img, full_img)
         print("epoch:", epoch, " g_l:", g_l, " d_l", d_l)
-        if epoch % 5 == 0:
-            dbiter = train_db.__iter__()
-            temp = list(dbiter)
-            l_show, f_show = temp[0]
-            plt.imshow(tf.squeeze(G(l_show)), cmap='gray')
-            plt.show()
-            # plt.imshow(f_show, cmap='gray')
-            # plt.show()
-        if epoch %11 ==10:
+
+        if epoch % 11 == 10:
             # if not os.path.exists('./WGAN-denoise-CT/g'+str(epoch)):
             #     os.mkdir('./WGAN-denoise-CT/g'+str(epoch))
             # G.save("./WGAN-denoise-CT/g"+str(epoch)+'.h5',save_format="tf")
@@ -180,9 +170,7 @@ def train(train_database: tf.data.Dataset, epochs, batchsize, continue_train=Fal
             #     os.mkdir('./WGAN-denoise-CT/d'+str(epoch))
             # D.save("./WGAN-denoise-CT/d"+str(epoch),save_format="tf")
             checkpointManager.save(epoch)
-            print("save checkpoint"+str(epoch))
-
-
+            print("save checkpoint" + str(epoch))
 
 
 def Set_GPU_Memory_Growth():
@@ -202,9 +190,9 @@ def Set_GPU_Memory_Growth():
 
 
 # Set_GPU_Memory_Growth()
-train_db=decode('trainData.tfrecord')
+train_db = decode('../Datapipe/trainData.tfrecord')
 """
-for i, (l, f) in enumerate(train_db):
+for i, (l, f) in enumerate(train_db):0
     if i % 1000 == 0:
         plt.figure()
         plt.subplot(111)
@@ -212,6 +200,18 @@ for i, (l, f) in enumerate(train_db):
         plt.subplot(112)
         plt.imshow(f, cmap='gray')
         plt.show()
-"""
+
 print("db finished")
-train(train_db, 100, batchsize=2,continue_train=True)
+train(train_db, 100, batchsize=2)
+"""
+def test():
+    train_database = decode('../Datapipe/trainData.tfrecord')
+    train_database = train_database.shuffle(2 * 5).batch(2)
+    for i, (low_img, full_img) in enumerate(train_database.take(2)):
+        plt.imshow(low_img[0], cmap='gray')
+        plt.show()
+        plt.imshow(full_img[0], cmap='gray')
+        plt.show()
+        plt.imshow(tf.subtract(low_img[0], full_img[0]), cmap='gray')
+        plt.show()
+test()
