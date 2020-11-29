@@ -19,10 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17feb4e2-996b-45d8-b7e5-f110c7910a8e" name="Default Changelist" comment="wocaoa">
+    <list default="true" id="17feb4e2-996b-45d8-b7e5-f110c7910a8e" name="Default Changelist" comment="ok ohhhhh">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Datapipe/loaddata.py" beforeDir="false" afterPath="$PROJECT_DIR$/Datapipe/loaddata.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAN/WGAN-denoise.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAN/WGAN-denoise.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +261,8 @@
       <workItem from="1606267264929" duration="18519000" />
       <workItem from="1606349404930" duration="8142000" />
       <workItem from="1606440046172" duration="12171000" />
-      <workItem from="1606458629767" duration="5651000" />
+      <workItem from="1606458629767" duration="6357000" />
+      <workItem from="1606478006883" duration="158000" />
     </task>
     <task id="LOCAL-00001" summary="load datas">
       <created>1604026356920</created>
@@ -405,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606461605417</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="ok ohhhhh">
+      <created>1606464354318</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1606464354318</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TodoView">
@@ -450,7 +456,8 @@
     <MESSAGE value="PatchDiscriminator.py add hdc" />
     <MESSAGE value="train without GAN" />
     <MESSAGE value="wocaoa" />
-    <option name="LAST_COMMIT_MESSAGE" value="wocaoa" />
+    <MESSAGE value="ok ohhhhh" />
+    <option name="LAST_COMMIT_MESSAGE" value="ok ohhhhh" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="91" key="#Inspections" timestamp="1604391858163">
@@ -469,26 +476,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="511" y="265" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1605158764901" />
-    <state x="279" y="110" key="FileChooserDialogImpl" timestamp="1606178324404">
+    <state x="279" y="110" key="FileChooserDialogImpl" timestamp="1606478031869">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="279" y="110" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606178324404" />
-    <state width="1493" height="178" key="GridCell.Tab.0.bottom" timestamp="1606464285179">
+    <state x="279" y="110" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606478031869" />
+    <state width="1493" height="178" key="GridCell.Tab.0.bottom" timestamp="1606465088069">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="178" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606464285179" />
-    <state width="1493" height="178" key="GridCell.Tab.0.center" timestamp="1606464285179">
+    <state width="1493" height="178" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606465088069" />
+    <state width="1493" height="178" key="GridCell.Tab.0.center" timestamp="1606465088068">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="178" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606464285179" />
-    <state width="1493" height="178" key="GridCell.Tab.0.left" timestamp="1606464285179">
+    <state width="1493" height="178" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606465088068" />
+    <state width="1493" height="178" key="GridCell.Tab.0.left" timestamp="1606465088066">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="178" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606464285179" />
-    <state width="1493" height="178" key="GridCell.Tab.0.right" timestamp="1606464285179">
+    <state width="1493" height="178" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606465088066" />
+    <state width="1493" height="178" key="GridCell.Tab.0.right" timestamp="1606465088068">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="178" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606464285179" />
+    <state width="1493" height="178" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606465088068" />
     <state width="1493" height="262" key="GridCell.Tab.1.bottom" timestamp="1606458376160">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

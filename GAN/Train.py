@@ -5,7 +5,7 @@ import tensorflow.keras as keras
 import matplotlib.pyplot as plt
 from GAN.Generators import Generator_unet
 
-def train_step(low_img,full_img,G,optimizer):
+def train_step_OnlyL2(low_img,full_img,G,optimizer):
     with tf.GradientTape() as g_tape:
         noise = G(low_img)
         denoised = low_img - noise
@@ -28,7 +28,7 @@ def train_withOnlyL2(train_database:tf.data.Dataset,epochs,batchsize,continue_tr
     for epoch in range(epochs):
         # 加载一个batch
         for i, (low_img,full_img) in enumerate(train_database):
-            g_l = train_step(low_img,full_img,G,optimizer)
+            g_l = train_step_OnlyL2(low_img,full_img,G,optimizer)
         print("epoch:", epoch, " g_l:", g_l)
         if epoch % 5 == 0:
             image_bytes = pydicom.dcmread('/content/drive/MyDrive/test.dcm')
