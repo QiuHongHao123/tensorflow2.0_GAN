@@ -1,9 +1,7 @@
-import numpy as np
 import pydicom
 import tensorflow as tf
-import tensorflow.keras as keras
 import matplotlib.pyplot as plt
-from GAN.Generators import Generator_unet
+from GAN.Models.Generators import Generator_unet
 
 def train_step_OnlyL2(low_img,full_img,G,optimizer):
     with tf.GradientTape() as g_tape:

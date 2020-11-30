@@ -122,7 +122,7 @@ for i, (l, f) in enumerate(total_ds):
         plt.show()
 
 '''
-encode2TfRecord()
+#encode2TfRecord()
 #
 # '''
 # 解码代码示例
