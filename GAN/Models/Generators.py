@@ -52,30 +52,31 @@ class Generator_unet(keras.Model):
     def call(self, x):
         # 下采样
         # 第一层
-        input1 = self.convd1_0(x)
+        input1 = self.convd1_0(x)   # 512*512*64
         od1 = self.convd1_1(input1)
         od1 = self.convd1_2(od1)
-        od1 = od1+input1
+        od1 = od1+input1            # 512*512*64
         # 第二层
-        input2 = self.down1(od1)
-        input2 = self.convd2_0(input2)
+        input2 = self.down1(od1)    # 256*256*64
+        input2 = self.convd2_0(input2)  # 256*256*128
         od2 = self.convd2_1(input2)
         od2 = self.convd2_2(od2)
-        od2 = od2+input2
+        od2 = od2+input2       # 256*256*128
         # 第三层
-        input3 = self.down2(od2)
-        input3 = self.convd3_0(input3)
+        input3 = self.down2(od2)    # 128*128*128
+        input3 = self.convd3_0(input3)  # 128*128*256
         od3 = self.convd3_1(input3)
         od3 = self.convd3_2(od3)
         od3 = od3+input3
         # 第四层
-        input4 = self.convd4_1(od3)
+        input4 = self.down3(od3)    # 64*64*256
+        input4 = self.convd4_1(input4)  # 64*64*512
         # 上采样
         # 第四层
         od4 = self.convu4_1(input4)
         # 第三层
         uinput3 = self.up1(od4)
-        uinput3 = self.convu3_0(uinput3)
+        uinput3 = self.convu3_0(uinput3)    # 128*128*256
         ou3 = tf.concat([od3,uinput3],axis=3)
         ou3 = self.convu3_1(ou3)
         ou3 = self.convu3_2(ou3)
