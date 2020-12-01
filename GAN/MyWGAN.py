@@ -7,6 +7,7 @@ from Datapipe import loadmnist
 import matplotlib.pyplot as plt
 from PIL import Image
 
+
 class Generator(keras.Model):
     def __init__(self):
         super(Generator, self).__init__()
@@ -101,16 +102,13 @@ def train(train_images: tf.data.Dataset, epochs):
             print('epoch=', epoch, 'G-loss=', g_l, 'D-loss=', d_l)
         if epoch % 50 == 0:
             test = tf.random.normal([1, 100], mean=0.0, stddev=1.0)
-            test= g(test)
-            plt.imshow(tf.squeeze(test),cmap='gray')
+            test = g(test)
+            plt.imshow(tf.squeeze(test), cmap='gray')
             plt.show()
-        if epoch %100 ==1:
-            if not os.path.exists('./mnist-WGAN/g'+str(epoch)):
-                os.mkdir('./mnist-WGAN/g'+str(epoch))
-            g.save("./mnist-WGAN/g"+str(epoch),save_format="tf")
-
-
-
+        if epoch % 100 == 1:
+            if not os.path.exists('./mnist-WGAN/g' + str(epoch)):
+                os.mkdir('./mnist-WGAN/g' + str(epoch))
+            g.save("./mnist-WGAN/g" + str(epoch), save_format="tf")
 
 
 train_db, test_db = loadmnist.mnist_dataset()

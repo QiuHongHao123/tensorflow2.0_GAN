@@ -50,11 +50,11 @@ class PatchDiscriminator(keras.Model):
         x = self.conv4_0(x)
         x = self.last(x)
 
-        res = self.flatten(x)
+        out = self.flatten(x)
         #res = self.dense(res)
 
-        res = tf.reduce_mean(res,axis=1)
-        return res
+        out = tf.reduce_mean(out,axis=1)
+        return out
 test=tf.zeros([2,512,512,1])
 D = PatchDiscriminator()
 res=D(test)
