@@ -24,8 +24,10 @@ class PatchDiscriminator(keras.Model):
         self.down3 =  self.down2 = keras.layers.MaxPool2D(2, 2, padding='VALID')    # 53
 
         self.conv4_0 = keras.layers.Conv2D(512, 3, 1, activation=tf.nn.leaky_relu, dilation_rate=1)  # 51
+        self.conv4_1 = keras.layers.Conv2D(512, 3, 1, activation=tf.nn.leaky_relu, dilation_rate=2)  # 47
+        self.conv4_2 = keras.layers.Conv2D(512, 3, 1, activation=tf.nn.leaky_relu, dilation_rate=3)  # 41
 
-        self.last = keras.layers.Conv2D(1, 3, 1,activation=tf.nn.sigmoid)   # 49
+        self.last = keras.layers.Conv2D(1, 3, 1)   # 39
         self.flatten = keras.layers.Flatten()
         # self.dense = keras.layers.Dense(100,activation=tf.nn.sigmoid)       # 100
 
@@ -48,6 +50,8 @@ class PatchDiscriminator(keras.Model):
         x = self.down3(x)
 
         x = self.conv4_0(x)
+        x = self.conv4_1(x)
+        x = self.conv4_2(x)
         x = self.last(x)
 
         out = self.flatten(x)
@@ -55,7 +59,7 @@ class PatchDiscriminator(keras.Model):
 
         out = tf.reduce_mean(out,axis=1)
         return out
-test=tf.zeros([2,512,512,1])
+test=tf.random.uniform([2,512,512,1])
 D = PatchDiscriminator()
 res=D(test)
 print(res)

@@ -1,6 +1,4 @@
 import tensorflow as tf
-import tensorflow.keras as keras
-from tensorflow_core.python.ops.distributions.kullback_leibler import cross_entropy
 
 
 def D_loss_WGAN(D, gen_img, full_img, gen_out, full_out):
@@ -8,7 +6,7 @@ def D_loss_WGAN(D, gen_img, full_img, gen_out, full_out):
         batchsz = batch_x.shape[0]
 
         # [b, h, w, c]
-        t = tf.random.uniform([batchsz, 1, 1])
+        t = tf.random.uniform([batchsz, 1, 1, 1])
         # [b, 1, 1, 1] => [b, h, w, c]
         t = tf.broadcast_to(t, batch_x.shape)
 
@@ -26,15 +24,12 @@ def D_loss_WGAN(D, gen_img, full_img, gen_out, full_out):
 
         return gp
 
-    false_loss = cross_entropy(tf.zeros_like(gen_out), gen_out)
-    true_loss = cross_entropy(tf.ones_like(full_out), full_out)
-    # l1_loss = tf.reduce_mean(tf.abs(full_img - fake_img))
-    l2_loss = tf.reduce_mean(tf.losses.mean_squared_error(gen_img, full_img))
+    w_loss = -tf.reduce_mean(full_out) + tf.reduce_mean(gen_out)
+
     gp = gradient_penalty(D, full_img, gen_img)
-    d_loss = gp * 1. + false_loss + true_loss + l2_loss
+    d_loss = gp * 1. + w_loss
     return d_loss
 
-
 def G_loss_WGAN(gen_out):
-    g_loss = cross_entropy(tf.ones_like(gen_out), gen_out)
+    g_loss = -tf.reduce_mean(gen_out)
     return g_loss
