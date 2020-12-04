@@ -19,11 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17feb4e2-996b-45d8-b7e5-f110c7910a8e" name="Default Changelist" comment="train start &#10;train rate turn to 1e-4 and the nan error fixed">
-      <change afterPath="$PROJECT_DIR$/GAN/Models/InstanceNormalization.py" afterDir="false" />
+    <list default="true" id="17feb4e2-996b-45d8-b7e5-f110c7910a8e" name="Default Changelist" comment="use IR and it should be get a reasonable result">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GAN/Models/Generators.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAN/Models/Generators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAN/Models/PatchDiscriminator.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAN/Models/PatchDiscriminator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,7 +274,8 @@
       <workItem from="1606792962359" duration="10023000" />
       <workItem from="1606867586900" duration="5578000" />
       <workItem from="1606897809509" duration="1777000" />
-      <workItem from="1606957643728" duration="14851000" />
+      <workItem from="1606957643728" duration="17489000" />
+      <workItem from="1607041276358" duration="2049000" />
     </task>
     <task id="LOCAL-00001" summary="load datas">
       <created>1604026356920</created>
@@ -459,7 +459,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606898008157</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="use IR and it should be get a reasonable result">
+      <created>1606980559275</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1606980559400</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TodoView">
@@ -509,7 +516,8 @@
     <MESSAGE value="discriminator finished" />
     <MESSAGE value="denoise with GAN" />
     <MESSAGE value="train start &#10;train rate turn to 1e-4 and the nan error fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="train start &#10;train rate turn to 1e-4 and the nan error fixed" />
+    <MESSAGE value="use IR and it should be get a reasonable result" />
+    <option name="LAST_COMMIT_MESSAGE" value="use IR and it should be get a reasonable result" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="91" key="#Inspections" timestamp="1604391858163">
@@ -532,22 +540,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="279" y="110" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606783910099" />
-    <state width="1493" height="180" key="GridCell.Tab.0.bottom" timestamp="1606965065835">
+    <state width="1493" height="180" key="GridCell.Tab.0.bottom" timestamp="1606983859699">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="180" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606965065835" />
-    <state width="1493" height="180" key="GridCell.Tab.0.center" timestamp="1606965065835">
+    <state width="1493" height="180" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606983859699" />
+    <state width="1493" height="180" key="GridCell.Tab.0.center" timestamp="1606983859699">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="180" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606965065835" />
-    <state width="1493" height="180" key="GridCell.Tab.0.left" timestamp="1606965065834">
+    <state width="1493" height="180" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606983859699" />
+    <state width="1493" height="180" key="GridCell.Tab.0.left" timestamp="1606983859698">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="180" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606965065834" />
-    <state width="1493" height="180" key="GridCell.Tab.0.right" timestamp="1606965065835">
+    <state width="1493" height="180" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606983859698" />
+    <state width="1493" height="180" key="GridCell.Tab.0.right" timestamp="1606983859699">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="180" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606965065835" />
+    <state width="1493" height="180" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606983859699" />
     <state width="1493" height="262" key="GridCell.Tab.1.bottom" timestamp="1606458376160">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
