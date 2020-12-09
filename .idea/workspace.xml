@@ -19,9 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17feb4e2-996b-45d8-b7e5-f110c7910a8e" name="Default Changelist" comment="test">
-      <change afterPath="$PROJECT_DIR$/C002-l-1-001.dcm" afterDir="false" />
+    <list default="true" id="17feb4e2-996b-45d8-b7e5-f110c7910a8e" name="Default Changelist" comment="GAN 挺失败的">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAN/Models/PatchDiscriminator.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAN/Models/PatchDiscriminator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,22 +56,22 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/GAN/mnist-WGAN/wgan-100.png&#10;F:/Tensorflow2.0study/GAN/mnist-WGAN/wgan-50.png" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LeetCode" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Tensorflow2.0study" />
+      <recent name="F:\Tensorflow2.0study\Datapipe" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\Tensorflow2.0study\GAN\Models" />
       <recent name="F:\Tensorflow2.0study\GAN" />
       <recent name="F:\Tensorflow2.0study\GAN\WGAN-denoise-CT" />
       <recent name="F:\Tensorflow2.0study\Block" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\Tensorflow2.0study" />
-      <recent name="F:\Tensorflow2.0study\Datapipe" />
     </key>
   </component>
   <component name="RunManager" selected="Python.test">
@@ -277,7 +277,8 @@
       <workItem from="1606957643728" duration="17489000" />
       <workItem from="1607041276358" duration="5199000" />
       <workItem from="1607318318194" duration="9863000" />
-      <workItem from="1607393464494" duration="1856000" />
+      <workItem from="1607393464494" duration="2648000" />
+      <workItem from="1607475284621" duration="2848000" />
     </task>
     <task id="LOCAL-00001" summary="load datas">
       <created>1604026356920</created>
@@ -482,7 +483,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607319321571</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="GAN 挺失败的">
+      <created>1607417092454</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1607417092454</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TodoView">
@@ -510,7 +518,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="load datas" />
     <MESSAGE value="realness loss copy" />
     <MESSAGE value="ma de yao ming" />
     <MESSAGE value="just fix the error ...&#10;finished the demo about mnist generator" />
@@ -535,7 +542,8 @@
     <MESSAGE value="use IR and it should be get a reasonable result" />
     <MESSAGE value="add normal in D" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="GAN 挺失败的" />
+    <option name="LAST_COMMIT_MESSAGE" value="GAN 挺失败的" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="91" key="#Inspections" timestamp="1604391858163">
@@ -558,22 +566,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="279" y="110" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607393514663" />
-    <state width="1493" height="183" key="GridCell.Tab.0.bottom" timestamp="1607416923709">
+    <state width="1493" height="183" key="GridCell.Tab.0.bottom" timestamp="1607482883527">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="183" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607416923709" />
-    <state width="1493" height="183" key="GridCell.Tab.0.center" timestamp="1607416923709">
+    <state width="1493" height="183" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607482883527" />
+    <state width="1493" height="183" key="GridCell.Tab.0.center" timestamp="1607482883526">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="183" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1607416923709" />
-    <state width="1493" height="183" key="GridCell.Tab.0.left" timestamp="1607416923709">
+    <state width="1493" height="183" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1607482883526" />
+    <state width="1493" height="183" key="GridCell.Tab.0.left" timestamp="1607482883526">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="183" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1607416923709" />
-    <state width="1493" height="183" key="GridCell.Tab.0.right" timestamp="1607416923709">
+    <state width="1493" height="183" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1607482883526" />
+    <state width="1493" height="183" key="GridCell.Tab.0.right" timestamp="1607482883526">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="183" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607416923709" />
+    <state width="1493" height="183" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607482883526" />
     <state width="1493" height="262" key="GridCell.Tab.1.bottom" timestamp="1606458376160">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -617,7 +625,7 @@
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$loadmnist.coverage" NAME="loadmnist Coverage Results" MODIFIED="1604543883981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Datapipe" />
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$MyWGAN.coverage" NAME="MyWGAN Coverage Results" MODIFIED="1605164279720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN" />
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$WGAN_denoise.coverage" NAME="WGAN-denoise Coverage Results" MODIFIED="1606464285113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN" />
-    <SUITE FILE_PATH="coverage/Tensorflow2_0study$test.coverage" NAME="test Coverage Results" MODIFIED="1607417038699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tensorflow2_0study$test.coverage" NAME="test Coverage Results" MODIFIED="1607482883515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$WGAN.coverage" NAME="WGAN Coverage Results" MODIFIED="1604566398490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN" />
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$PatchDiscriminator.coverage" NAME="PatchDiscriminator Coverage Results" MODIFIED="1606811717579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN/Models" />
   </component>

@@ -9,27 +9,24 @@ class PatchDiscriminator(keras.Model):
         super(PatchDiscriminator, self).__init__()
         self.conv1_0 = keras.layers.Conv2D(32, 3, 1, activation=tf.nn.leaky_relu,dilation_rate=1)          # 510
         self.conv1_1 = keras.layers.Conv2D(32, 3, 1, activation=tf.nn.leaky_relu,dilation_rate=2)          # 506
-        self.conv1_2 = keras.layers.Conv2D(32, 3, 1, activation=tf.nn.leaky_relu,dilation_rate=3)          # 500
+        self.conv1_2 = keras.layers.Conv2D(32, 3, 1,dilation_rate=3)          # 500
+        self.in1 = InstanceNormalization()
 
         self.down1 = keras.layers.MaxPool2D(2, 2, padding='VALID')                                         # 250
 
         self.conv2_0 = keras.layers.Conv2D(64, 3, 1, activation=tf.nn.leaky_relu, dilation_rate=1)         # 248
         self.conv2_1 = keras.layers.Conv2D(64, 3, 1, activation=tf.nn.leaky_relu, dilation_rate=2)         # 244
-        self.conv2_2 = keras.layers.Conv2D(64, 3, 1, activation=tf.nn.leaky_relu, dilation_rate=3)         # 238
+        self.conv2_2 = keras.layers.Conv2D(64, 3, 1, dilation_rate=3)         # 238
+        self.in2 = InstanceNormalization()
 
         self.down2 = keras.layers.MaxPool2D(2, 2, padding='VALID')                                         # 119
 
         self.conv3_0 = keras.layers.Conv2D(128, 3, 1, activation=tf.nn.leaky_relu, dilation_rate=1)        # 117
         self.conv3_1 = keras.layers.Conv2D(128, 3, 1, activation=tf.nn.leaky_relu, dilation_rate=2)        # 113
-        self.conv3_2 = keras.layers.Conv2D(128, 3, 1, activation=tf.nn.leaky_relu, dilation_rate=3)        # 107
+        self.conv3_2 = keras.layers.Conv2D(128, 3, 1, dilation_rate=3)        # 107
+        self.in3 = InstanceNormalization()
 
-        self.down3 =  self.down2 = keras.layers.MaxPool2D(2, 2, padding='VALID')    # 53
-
-        self.conv4_0 = keras.layers.Conv2D(256, 3, 1, activation=tf.nn.leaky_relu, dilation_rate=1)  # 51
-        self.conv4_1 = keras.layers.Conv2D(256, 3, 1, activation=tf.nn.leaky_relu, dilation_rate=2)  # 47
-        self.conv4_2 = keras.layers.Conv2D(256, 3, 1, activation=tf.nn.leaky_relu, dilation_rate=3)  # 41
-
-        self.last = keras.layers.Conv2D(1, 3, 1)   # 39
+        self.last = keras.layers.Conv2D(1, 3, 1,activation=tf.nn.sigmoid)   # 39
         self.flatten = keras.layers.Flatten()
         # self.dense = keras.layers.Dense(100,activation=tf.nn.sigmoid)       # 100
 
@@ -39,21 +36,20 @@ class PatchDiscriminator(keras.Model):
         x = self.conv1_0(x)
         x = self.conv1_1(x)
         x = self.conv1_2(x)
+        x = tf.nn.leaky_relu(self.in1(x))
         x = self.down1(x)
 
         x = self.conv2_0(x)
         x = self.conv2_1(x)
         x = self.conv2_2(x)
+        x = tf.nn.leaky_relu(self.in2(x))
         x = self.down2(x)
 
         x = self.conv3_0(x)
         x = self.conv3_1(x)
         x = self.conv3_2(x)
+        x = tf.nn.leaky_relu(self.in3(x))
         x = self.down3(x)
-
-        x = self.conv4_0(x)
-        x = self.conv4_1(x)
-        x = self.conv4_2(x)
         x = self.last(x)
 
         out = self.flatten(x)
