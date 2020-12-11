@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pywt
 from GAN.Models.Generators import Generator_unet_d4
 import tensorflow as tf
-
+import cv2
 
 def preprocess(input):
 
@@ -16,6 +16,7 @@ def preprocess(input):
 
     return out
 def test():
+
     image_bytes_F = pydicom.dcmread('./test_f.dcm')
     image_f = image_bytes_F.pixel_array
     image_bytes_L = pydicom.dcmread('./test_l.dcm')
@@ -33,5 +34,27 @@ def test():
     plt.show()
 
 
+def testInreal():
+    image = np.fromfile('./realImage/1.2.168.2101.441.100000073.20200313130928.130928_3D.raw', dtype='int16')
+    imageNp = np.reshape(image, [400, 400, 400])
+    testImage = imageNp[200]
+    testImage = preprocess(testImage)
 
-test()
+
+    G = Generator_unet_d4()
+
+    checkpoint = tf.train.Checkpoint(mymodel_G=G)
+    checkpoint.restore('./Models/withoutGAN-d4/ckpt-100')
+
+    noise = G(tf.reshape(testImage,[1,400,400,1]))
+    plt.imshow(testImage,cmap='gray')
+    plt.show()
+   
+    plt.imshow(testImage-tf.squeeze(noise), cmap='gray')
+    plt.show()
+    plt.imshow(tf.squeeze(noise),cmap='gray')
+    plt.show()
+
+
+testInreal()
+

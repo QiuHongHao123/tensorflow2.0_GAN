@@ -19,7 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17feb4e2-996b-45d8-b7e5-f110c7910a8e" name="Default Changelist" comment="GAN 挺失败的">
+    <list default="true" id="17feb4e2-996b-45d8-b7e5-f110c7910a8e" name="Default Changelist" comment="change D">
+      <change afterPath="$PROJECT_DIR$/realImage/realImageTest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GAN/Models/PatchDiscriminator.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAN/Models/PatchDiscriminator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
@@ -56,7 +57,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/GAN/mnist-WGAN/wgan-100.png&#10;F:/Tensorflow2.0study/GAN/mnist-WGAN/wgan-50.png" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../研究生课程/实习期间资料/每周报告/withoutGAN" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -119,28 +120,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="WGAN-denoise" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Tensorflow2.0study" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GAN" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GAN/WGAN-denoise.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="loss_WGAN" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Tensorflow2.0study" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -155,6 +134,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Loss/loss_WGAN.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="realImageTest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Tensorflow2.0study" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/realImage" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/realImage/realImageTest.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -187,18 +188,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.WGAN-GP" />
-      <item itemvalue="Python.WGAN-denoise" />
       <item itemvalue="Python.PatchDiscriminator" />
       <item itemvalue="Python.loss_WGAN" />
       <item itemvalue="Python.test" />
+      <item itemvalue="Python.realImageTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.realImageTest" />
         <item itemvalue="Python.PatchDiscriminator" />
         <item itemvalue="Python.loss_WGAN" />
         <item itemvalue="Python.WGAN-GP" />
-        <item itemvalue="Python.WGAN-denoise" />
       </list>
     </recent_temporary>
   </component>
@@ -278,7 +279,9 @@
       <workItem from="1607041276358" duration="5199000" />
       <workItem from="1607318318194" duration="9863000" />
       <workItem from="1607393464494" duration="2648000" />
-      <workItem from="1607475284621" duration="2848000" />
+      <workItem from="1607475284621" duration="11087000" />
+      <workItem from="1607502204557" duration="1424000" />
+      <workItem from="1607655052922" duration="976000" />
     </task>
     <task id="LOCAL-00001" summary="load datas">
       <created>1604026356920</created>
@@ -490,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607417092454</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="change D">
+      <created>1607491091530</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1607491091530</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TodoView">
@@ -518,7 +528,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="realness loss copy" />
     <MESSAGE value="ma de yao ming" />
     <MESSAGE value="just fix the error ...&#10;finished the demo about mnist generator" />
     <MESSAGE value="dense block and res block" />
@@ -543,7 +552,8 @@
     <MESSAGE value="add normal in D" />
     <MESSAGE value="test" />
     <MESSAGE value="GAN 挺失败的" />
-    <option name="LAST_COMMIT_MESSAGE" value="GAN 挺失败的" />
+    <MESSAGE value="change D" />
+    <option name="LAST_COMMIT_MESSAGE" value="change D" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="91" key="#Inspections" timestamp="1604391858163">
@@ -562,26 +572,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="511" y="265" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1605158764901" />
-    <state x="279" y="110" key="FileChooserDialogImpl" timestamp="1607393514663">
+    <state x="279" y="110" key="FileChooserDialogImpl" timestamp="1607496830404">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="279" y="110" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607393514663" />
-    <state width="1493" height="183" key="GridCell.Tab.0.bottom" timestamp="1607482883527">
+    <state x="279" y="110" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607496830404" />
+    <state width="1493" height="183" key="GridCell.Tab.0.bottom" timestamp="1607499696144">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="183" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607482883527" />
-    <state width="1493" height="183" key="GridCell.Tab.0.center" timestamp="1607482883526">
+    <state width="1493" height="183" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607499696144" />
+    <state width="1493" height="183" key="GridCell.Tab.0.center" timestamp="1607499696144">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="183" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1607482883526" />
-    <state width="1493" height="183" key="GridCell.Tab.0.left" timestamp="1607482883526">
+    <state width="1493" height="183" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1607499696144" />
+    <state width="1493" height="183" key="GridCell.Tab.0.left" timestamp="1607499696144">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="183" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1607482883526" />
-    <state width="1493" height="183" key="GridCell.Tab.0.right" timestamp="1607482883526">
+    <state width="1493" height="183" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1607499696144" />
+    <state width="1493" height="183" key="GridCell.Tab.0.right" timestamp="1607499696144">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="183" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607482883526" />
+    <state width="1493" height="183" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607499696144" />
     <state width="1493" height="262" key="GridCell.Tab.1.bottom" timestamp="1606458376160">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -606,10 +616,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="775" height="419" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1606456029215" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1605169070945">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1607493605814">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1605169070945" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1607493605814" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -625,7 +635,8 @@
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$loadmnist.coverage" NAME="loadmnist Coverage Results" MODIFIED="1604543883981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Datapipe" />
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$MyWGAN.coverage" NAME="MyWGAN Coverage Results" MODIFIED="1605164279720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN" />
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$WGAN_denoise.coverage" NAME="WGAN-denoise Coverage Results" MODIFIED="1606464285113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN" />
-    <SUITE FILE_PATH="coverage/Tensorflow2_0study$test.coverage" NAME="test Coverage Results" MODIFIED="1607482883515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tensorflow2_0study$realImageTest.coverage" NAME="realImageTest Coverage Results" MODIFIED="1607493686192" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/realImage" />
+    <SUITE FILE_PATH="coverage/Tensorflow2_0study$test.coverage" NAME="test Coverage Results" MODIFIED="1607655586700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$WGAN.coverage" NAME="WGAN Coverage Results" MODIFIED="1604566398490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN" />
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$PatchDiscriminator.coverage" NAME="PatchDiscriminator Coverage Results" MODIFIED="1606811717579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN/Models" />
   </component>
