@@ -21,11 +21,11 @@ def test():
     image_f = image_bytes_F.pixel_array
     image_bytes_L = pydicom.dcmread('./test_l.dcm')
     image_l = image_bytes_L.pixel_array
-    image_l = preprocess((image_l))
+    image_l = preprocess(image_l)
     G = Generator_unet_d4()
 
     checkpoint = tf.train.Checkpoint(mymodel_G=G)
-    checkpoint.restore('./Models/withGAN-d4/ckpt-75')
+    checkpoint.restore('./Models/withGAN-simplerD/ckpt-40')
     plt.imshow(image_f,cmap='gray')
     plt.show()
     plt.imshow(image_l, cmap='gray')
@@ -44,7 +44,7 @@ def testInreal():
     G = Generator_unet_d4()
 
     checkpoint = tf.train.Checkpoint(mymodel_G=G)
-    checkpoint.restore('./Models/withoutGAN-d4/ckpt-100')
+    checkpoint.restore('./Models/withGAN-simplerD/ckpt-30')
 
     noise = G(tf.reshape(testImage,[1,400,400,1]))
     plt.imshow(testImage,cmap='gray')
@@ -55,6 +55,4 @@ def testInreal():
     plt.imshow(tf.squeeze(noise),cmap='gray')
     plt.show()
 
-
-testInreal()
-
+test()

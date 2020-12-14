@@ -52,8 +52,9 @@ def trainStep_withGAN_G(low_img, full_img, G, D, g_optimizer):
         gen_img = low_img - noise_img
         gen_out = D(gen_img)
         g_loss = G_loss_WGAN(gen_out)
+        l1_loss = tf.reduce_mean(tf.abs(full_img - gen_img))
         l2_loss = tf.reduce_mean(tf.losses.mean_squared_error(gen_img, full_img))
-        g_loss = g_loss+4*l2_loss
+        g_loss = g_loss+200*l1_loss
     gradients_of_generator = g_tape.gradient(g_loss, G.trainable_variables)
     g_optimizer.apply_gradients(zip(gradients_of_generator, G.trainable_variables))
     return g_loss
