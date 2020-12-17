@@ -19,9 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17feb4e2-996b-45d8-b7e5-f110c7910a8e" name="Default Changelist" comment="test in real img">
+    <list default="true" id="17feb4e2-996b-45d8-b7e5-f110c7910a8e" name="Default Changelist" comment="l1oss">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GAN/Train.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAN/Train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -284,7 +283,9 @@
       <workItem from="1607667585853" duration="3032000" />
       <workItem from="1607675963051" duration="1209000" />
       <workItem from="1607905835391" duration="242000" />
-      <workItem from="1607941334481" duration="665000" />
+      <workItem from="1607941334481" duration="693000" />
+      <workItem from="1607949179054" duration="314000" />
+      <workItem from="1607949634718" duration="803000" />
     </task>
     <task id="LOCAL-00001" summary="load datas">
       <created>1604026356920</created>
@@ -510,7 +511,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607656103730</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="l1oss">
+      <created>1607943029095</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1607943029095</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TodoView">
@@ -538,7 +546,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="just fix the error ...&#10;finished the demo about mnist generator" />
     <MESSAGE value="dense block and res block" />
     <MESSAGE value="wgan denoise test" />
     <MESSAGE value="prepare" />
@@ -563,7 +570,8 @@
     <MESSAGE value="GAN 挺失败的" />
     <MESSAGE value="change D" />
     <MESSAGE value="test in real img" />
-    <option name="LAST_COMMIT_MESSAGE" value="test in real img" />
+    <MESSAGE value="l1oss" />
+    <option name="LAST_COMMIT_MESSAGE" value="l1oss" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="91" key="#Inspections" timestamp="1604391858163">
@@ -586,22 +594,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="279" y="110" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607667916698" />
-    <state width="1493" height="185" key="GridCell.Tab.0.bottom" timestamp="1607677181642">
+    <state width="1493" height="187" key="GridCell.Tab.0.bottom" timestamp="1607950442133">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="185" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607677181642" />
-    <state width="1493" height="185" key="GridCell.Tab.0.center" timestamp="1607677181641">
+    <state width="1493" height="187" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607950442133" />
+    <state width="1493" height="187" key="GridCell.Tab.0.center" timestamp="1607950442133">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="185" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1607677181641" />
-    <state width="1493" height="185" key="GridCell.Tab.0.left" timestamp="1607677181641">
+    <state width="1493" height="187" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1607950442133" />
+    <state width="1493" height="187" key="GridCell.Tab.0.left" timestamp="1607950442133">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="185" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1607677181641" />
-    <state width="1493" height="185" key="GridCell.Tab.0.right" timestamp="1607677181641">
+    <state width="1493" height="187" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1607950442133" />
+    <state width="1493" height="187" key="GridCell.Tab.0.right" timestamp="1607950442133">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="185" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607677181641" />
+    <state width="1493" height="187" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607950442133" />
     <state width="1493" height="262" key="GridCell.Tab.1.bottom" timestamp="1606458376160">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -626,10 +634,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="775" height="419" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1606456029215" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1607493605814">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1607950440865">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1607493605814" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1607950440865" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -646,7 +654,7 @@
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$MyWGAN.coverage" NAME="MyWGAN Coverage Results" MODIFIED="1605164279720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN" />
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$WGAN_denoise.coverage" NAME="WGAN-denoise Coverage Results" MODIFIED="1606464285113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN" />
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$realImageTest.coverage" NAME="realImageTest Coverage Results" MODIFIED="1607493686192" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/realImage" />
-    <SUITE FILE_PATH="coverage/Tensorflow2_0study$test.coverage" NAME="test Coverage Results" MODIFIED="1607677111711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tensorflow2_0study$test.coverage" NAME="test Coverage Results" MODIFIED="1607950325681" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$WGAN.coverage" NAME="WGAN Coverage Results" MODIFIED="1604566398490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN" />
     <SUITE FILE_PATH="coverage/Tensorflow2_0study$PatchDiscriminator.coverage" NAME="PatchDiscriminator Coverage Results" MODIFIED="1606811717579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GAN/Models" />
   </component>
