@@ -19,9 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17feb4e2-996b-45d8-b7e5-f110c7910a8e" name="Default Changelist" comment="l1oss">
+    <list default="true" id="17feb4e2-996b-45d8-b7e5-f110c7910a8e" name="Default Changelist" comment="models">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAN/Train.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAN/Train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +55,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/GAN/mnist-WGAN/wgan-100.png&#10;F:/Tensorflow2.0study/GAN/mnist-WGAN/wgan-50.png" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../研究生课程/实习期间资料/每周报告/withoutGAN/denoised.png" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LeetCode" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -286,6 +286,9 @@
       <workItem from="1607941334481" duration="693000" />
       <workItem from="1607949179054" duration="314000" />
       <workItem from="1607949634718" duration="803000" />
+      <workItem from="1608195260575" duration="179000" />
+      <workItem from="1608440319583" duration="168000" />
+      <workItem from="1608621375858" duration="735000" />
     </task>
     <task id="LOCAL-00001" summary="load datas">
       <created>1604026356920</created>
@@ -518,7 +521,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607943029095</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="models">
+      <created>1608195372230</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1608195372230</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TodoView">
@@ -546,7 +556,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="dense block and res block" />
     <MESSAGE value="wgan denoise test" />
     <MESSAGE value="prepare" />
     <MESSAGE value=".。。显卡不行啊" />
@@ -571,7 +580,8 @@
     <MESSAGE value="change D" />
     <MESSAGE value="test in real img" />
     <MESSAGE value="l1oss" />
-    <option name="LAST_COMMIT_MESSAGE" value="l1oss" />
+    <MESSAGE value="models" />
+    <option name="LAST_COMMIT_MESSAGE" value="models" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="91" key="#Inspections" timestamp="1604391858163">
@@ -590,10 +600,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="511" y="265" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1605158764901" />
-    <state x="279" y="110" key="FileChooserDialogImpl" timestamp="1607667916698">
+    <state x="279" y="110" key="FileChooserDialogImpl" timestamp="1608440356146">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="279" y="110" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607667916698" />
+    <state x="279" y="110" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1608440356146" />
     <state width="1493" height="187" key="GridCell.Tab.0.bottom" timestamp="1607950442133">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

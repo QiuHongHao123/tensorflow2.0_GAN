@@ -9,9 +9,11 @@ from Loss.loss_WGAN import G_loss_WGAN, D_loss_WGAN
 def trainStep_OnlyL2(low_img, full_img, G, optimizer):
     with tf.GradientTape() as g_tape:
         noise = G(low_img)
-        denoised = low_img - noise
-        # l2 loss
-        g_l = l2_loss = tf.reduce_mean(tf.losses.mean_squared_error(denoised, full_img))
+        # denoised = low_img - noise
+        # # l2 loss
+        # g_l = l2_loss = tf.reduce_mean(tf.losses.mean_squared_error(denoised, full_img))
+        #残差思想
+        g_l = l2_loss = tf.reduce_mean(tf.losses.mean_squared_error(noise, full_img-low_img))
     gradients_of_generator = g_tape.gradient(g_l, G.trainable_variables)
     optimizer.apply_gradients(zip(gradients_of_generator, G.trainable_variables))
     return g_l
