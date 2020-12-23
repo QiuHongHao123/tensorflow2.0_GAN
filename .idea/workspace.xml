@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17feb4e2-996b-45d8-b7e5-f110c7910a8e" name="Default Changelist" comment="models">
+    <list default="true" id="17feb4e2-996b-45d8-b7e5-f110c7910a8e" name="Default Changelist" comment="res">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GAN/Train.py" beforeDir="false" afterPath="$PROJECT_DIR$/GAN/Train.py" afterDir="false" />
     </list>
@@ -288,7 +288,8 @@
       <workItem from="1607949634718" duration="803000" />
       <workItem from="1608195260575" duration="179000" />
       <workItem from="1608440319583" duration="168000" />
-      <workItem from="1608621375858" duration="735000" />
+      <workItem from="1608621375858" duration="746000" />
+      <workItem from="1608682152620" duration="1152000" />
     </task>
     <task id="LOCAL-00001" summary="load datas">
       <created>1604026356920</created>
@@ -528,7 +529,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608195372230</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="res">
+      <created>1608623882403</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1608623882403</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TodoView">
@@ -556,7 +564,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="wgan denoise test" />
     <MESSAGE value="prepare" />
     <MESSAGE value=".。。显卡不行啊" />
     <MESSAGE value="try just gan" />
@@ -581,7 +588,8 @@
     <MESSAGE value="test in real img" />
     <MESSAGE value="l1oss" />
     <MESSAGE value="models" />
-    <option name="LAST_COMMIT_MESSAGE" value="models" />
+    <MESSAGE value="res" />
+    <option name="LAST_COMMIT_MESSAGE" value="res" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="91" key="#Inspections" timestamp="1604391858163">

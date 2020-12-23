@@ -50,8 +50,9 @@ def train_withOnlyL2(train_database: tf.data.Dataset, epochs, batchsize, continu
 
 def trainStep_withGAN_G(low_img, full_img, G, D, g_optimizer):
     with tf.GradientTape() as g_tape:
-        noise_img = G(low_img)
-        gen_img = low_img - noise_img
+        # noise_img = G(low_img)
+        # gen_img = low_img - noise_img
+        gen_img = G(low_img)
         gen_out = D(gen_img)
         g_loss = G_loss_WGAN(gen_out)
         l1_loss = tf.reduce_mean(tf.abs(full_img - gen_img))
@@ -64,8 +65,9 @@ def trainStep_withGAN_G(low_img, full_img, G, D, g_optimizer):
 
 def trainStep_withGAN_D(low_img, full_img, G, D, d_optimizer):
     with tf.GradientTape() as d_tape:
-        noise_img = G(low_img)
-        gen_img = low_img - noise_img
+        # noise_img = G(low_img)
+        # gen_img = low_img - noise_img
+        gen_img = G(low_img)
         gen_out = D(gen_img)
         full_out = D(full_img)
         d_loss = D_loss_WGAN(D, gen_img, full_img, gen_out, full_out)
